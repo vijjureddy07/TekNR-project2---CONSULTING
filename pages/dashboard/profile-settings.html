@@ -1,0 +1,60 @@
+<!doctype html>
+<!-- ============================== Profile Settings ============================== -->
+<html lang="en" dir="ltr" data-theme="light">
+<!-- ============================== Head ============================== -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile Settings | Northline Advisory</title>
+  <meta name="description" content="Update your account details and keep your preferences current.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/svg+xml" href="../../assets/images/branding/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,500,0,0" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../../assets/css/rtl.css">
+</head>
+<!-- ============================== Body ============================== -->
+<body class="site-body page-dashboard-shell">
+<!-- ============================== Utility Bar ============================== -->
+<div class="utility-bar">
+  <div class="container utility-bar__inner">
+    <a class="utility-bar__brand" href="../index.html">
+      <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+      <span>Northline Advisory</span>
+    </a>
+    <div class="utility-bar__actions">
+      <button class="icon-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+        <span class="material-symbols-outlined" aria-hidden="true">dark_mode</span>
+      </button>
+      <button class="icon-toggle direction-toggle" type="button" data-rtl-toggle aria-label="Switch to RTL layout">LTR</button>
+      <a class="button button--ghost" href="../index.html">Exit</a>
+    </div>
+  </div>
+</div>
+
+        <!-- ============================== Main ============================== -->
+<main id="main-content">
+<!-- ============================== Page Content ============================== -->
+<section class="section dashboard-section">
+  <div class="container dashboard-app">
+    <!-- ============================== Dashboard Sidebar ============================== -->
+    <aside class="dashboard-sidebar" data-reveal><span class="eyebrow eyebrow--small">Client dashboard</span><h2>Client Dashboard</h2><p>Track progress, book calls, and continue your plan.</p><nav class="dashboard-nav"><a class="dashboard-nav__link" href="client-dashboard.html"><span class="material-symbols-outlined" aria-hidden="true">dashboard</span>Overview</a><a class="dashboard-nav__link" href="book-calls.html"><span class="material-symbols-outlined" aria-hidden="true">calendar_month</span>Book Calls</a><a class="dashboard-nav__link" href="my-courses.html"><span class="material-symbols-outlined" aria-hidden="true">school</span>Courses</a><a class="dashboard-nav__link" href="worksheets.html"><span class="material-symbols-outlined" aria-hidden="true">description</span>Worksheets</a><a class="dashboard-nav__link" href="goals-tracker.html"><span class="material-symbols-outlined" aria-hidden="true">flag</span>Goals</a><a class="dashboard-nav__link" href="messages.html"><span class="material-symbols-outlined" aria-hidden="true">chat</span>Messages</a><a class="dashboard-nav__link" href="billing.html"><span class="material-symbols-outlined" aria-hidden="true">receipt_long</span>Billing</a><a class="dashboard-nav__link is-current" href="profile-settings.html"><span class="material-symbols-outlined" aria-hidden="true">settings</span>Settings</a></nav></aside>
+    <!-- ============================== Dashboard Main ============================== -->
+    <div class="dashboard-main" data-reveal>
+      <div class="dashboard-heading"><span class="eyebrow">Profile Settings</span><h1>Profile Settings</h1><p>Update your account details and keep your preferences current.</p></div>
+      <div class="dashboard-grid"><form class="dashboard-card card" data-success-message="Profile details saved for template preview." data-validate novalidate><h3>Profile details</h3><div class="form-grid"><label>Full Name<input class="input" type="text" value="Northline Client" required></label><label>E-mail<input class="input" type="email" value="client@example.com" required></label></div><button class="button" type="submit">Save changes</button><p class="form-message" aria-live="polite"></p></form><article class="dashboard-card card"><h3>Preferences</h3><p>Theme, RTL, and notifications can be managed through the top utility controls.</p><ul class="icon-list"><li>Switch between light and dark previews at any time</li><li>Use RTL mode to review mirrored layouts before launch</li><li>Keep notifications focused on bookings, updates, and next actions</li></ul></article></div>
+    </div>
+  </div>
+</section>
+
+        </main>
+        <!-- ============================== Scripts ============================== -->
+<script src="../../assets/js/dashboard.js" defer></script>
+<script src="../../assets/js/main.js" defer></script>
+
+      </body>
+    </html>
