@@ -136,7 +136,7 @@
 
   function updateDirectionButtons(direction) {
     document.querySelectorAll('[data-rtl-toggle]').forEach(function (button) {
-      button.textContent = direction === 'rtl' ? 'RTL' : 'LTR';
+      button.textContent = direction === 'rtl' ? 'LTR' : 'RTL';
       button.setAttribute('aria-label', direction === 'rtl' ? 'Switch to left-to-right layout' : 'Switch to right-to-left layout');
     });
   }
@@ -144,6 +144,14 @@
   function applyDirection(direction) {
     document.documentElement.setAttribute('dir', direction);
     updateDirectionButtons(direction);
+
+    document.dispatchEvent(new CustomEvent('northline:directionchange', {
+      detail: { direction: direction }
+    }));
+
+    window.requestAnimationFrame(function () {
+      window.dispatchEvent(new Event('resize'));
+    });
   }
 
   function initPreferences() {

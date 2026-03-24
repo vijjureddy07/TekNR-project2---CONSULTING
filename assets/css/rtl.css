@@ -153,6 +153,11 @@ html[dir="rtl"] .utility-bar__actions {
   justify-content: flex-start;
 }
 
+html[dir="rtl"] .page-dashboard-shell .utility-bar__actions {
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+}
+
 html[dir="rtl"] .hero-actions {
   justify-content: flex-start;
 }

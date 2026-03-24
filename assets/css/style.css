@@ -4958,6 +4958,28 @@ select:focus-visible {
   gap: var(--layout-gap-lg);
 }
 
+.page-dashboard-shell .utility-bar__brand {
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.page-dashboard-shell .utility-bar__brand span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.page-dashboard-shell .utility-bar__actions {
+  margin-inline-start: auto;
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+
+.page-dashboard-shell .utility-bar__actions > * {
+  flex: 0 0 auto;
+}
+
 .page-home .stats-inline {
   row-gap: 20px;
 }
@@ -4980,6 +5002,23 @@ select:focus-visible {
 
 .page-contact .contact-grid {
   row-gap: 20px;
+}
+
+.utility-shell .hero-actions {
+  width: min(100%, 480px);
+}
+
+.placeholder-card .text-link {
+  margin-top: auto;
+}
+
+.placeholder-card :is(ul, ol) {
+  margin: 0;
+}
+
+.utility-shell.card,
+.legal-shell.card {
+  padding: var(--panel-pad-lg);
 }
 
 @keyframes imageCrossfadeLoop {
@@ -6781,12 +6820,16 @@ body:not(.page-about) .article-hero p {
   }
 
   .page-dashboard-shell .utility-bar__inner {
-    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
   }
 
   .page-dashboard-shell .utility-bar__actions {
-    width: 100%;
-    flex-wrap: wrap;
+    width: auto;
+    margin-inline-start: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
   }
 
   .page-dashboard-shell .dashboard-sidebar-toggle,
@@ -6854,6 +6897,10 @@ body:not(.page-about) .article-hero p {
   .page-dashboard-shell .dashboard-main,
   .page-dashboard-shell .dashboard-sidebar {
     padding-inline: 20px;
+  }
+
+  .page-dashboard-shell .utility-bar__actions {
+    gap: 8px;
   }
 
   .page-dashboard-shell .dashboard-sidebar {
