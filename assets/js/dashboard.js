@@ -65,6 +65,7 @@
       return;
     }
 
+    sidebar.removeAttribute('data-reveal');
     sidebar.classList.add('is-visible');
 
     if (!sidebar.id) {
@@ -123,6 +124,8 @@
 
     function closeSidebar(returnFocus) {
       document.body.classList.remove('dashboard-sidebar-open');
+      sidebar.classList.remove('is-open');
+      backdrop.classList.remove('is-active');
       toggleButton.setAttribute('aria-expanded', 'false');
       toggleButton.setAttribute('aria-label', 'Open dashboard menu');
       backdrop.hidden = true;
@@ -144,6 +147,8 @@
       }
 
       document.body.classList.add('dashboard-sidebar-open');
+      sidebar.classList.add('is-open');
+      backdrop.classList.add('is-active');
       toggleButton.setAttribute('aria-expanded', 'true');
       toggleButton.setAttribute('aria-label', 'Close dashboard menu');
       sidebar.setAttribute('aria-hidden', 'false');
@@ -159,6 +164,8 @@
       }
 
       if (!document.body.classList.contains('dashboard-sidebar-open')) {
+        sidebar.classList.remove('is-open');
+        backdrop.classList.remove('is-active');
         sidebar.setAttribute('aria-hidden', 'true');
         backdrop.hidden = true;
       }
@@ -177,17 +184,37 @@
 
     closeButton.addEventListener('click', function (event) {
       event.preventDefault();
+      event.stopPropagation();
       closeSidebar(true);
     });
 
     backdrop.addEventListener('click', function (event) {
       event.preventDefault();
+      event.stopPropagation();
       closeSidebar(true);
     });
 
     sidebar.querySelectorAll('.dashboard-nav__link, .dashboard-sidebar__exit').forEach(function (link) {
-      link.addEventListener('click', function () {
-        if (usesOverlaySidebar()) {
+      link.addEventListener('click', function (event) {
+        var href = link.getAttribute('href') || '';
+
+        if (!usesOverlaySidebar()) {
+          return;
+        }
+
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.getAttribute('target') === '_blank') {
+          return;
+        }
+        event.stopPropagation();
+
+        if (!href || href.charAt(0) === '#') {
+          event.preventDefault();
+          closeSidebar(false);
+          return;
+        }
+
+        if (link.pathname === window.location.pathname && link.search === window.location.search && link.hash === window.location.hash) {
+          event.preventDefault();
           closeSidebar(false);
         }
       });

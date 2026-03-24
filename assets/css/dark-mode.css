@@ -157,13 +157,13 @@ html[data-theme="dark"] .delivery-model {
 }
 
 html[data-theme="dark"] .dashboard-sidebar {
-  background: rgba(10, 18, 33, 0.92);
+  background: #0b1526;
   color: var(--color-text);
   border-color: rgba(173, 199, 230, 0.14);
 }
 
 html[data-theme="dark"] .dashboard-main {
-  background: rgba(10, 18, 33, 0.92);
+  background: #0d182b;
   color: var(--color-text);
   border-color: rgba(173, 199, 230, 0.14);
 }
@@ -535,7 +535,7 @@ html[data-theme="dark"] .dashboard-summary__item {
 }
 
 html[data-theme="dark"] .dashboard-highlight {
-  background: linear-gradient(135deg, rgba(173, 199, 230, 0.12), rgba(92, 139, 192, 0.08));
+  background: rgba(17, 32, 54, 0.96);
 }
 
 /* ============================== Dark Theme Section Background Overrides ============================== */
@@ -605,7 +605,7 @@ html[data-theme="dark"] .page-auth-shell .auth-section::before {
 }
 
 html[data-theme="dark"] .page-dashboard-shell .dashboard-section::before {
-  background: linear-gradient(180deg, rgba(8, 14, 26, 0.82), rgba(8, 18, 33, 0.94));
+  background: #081221;
 }
 
 html[data-theme="dark"] .page-checkout .utility-section::before {

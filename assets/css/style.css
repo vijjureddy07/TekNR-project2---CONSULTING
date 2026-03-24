@@ -2291,14 +2291,14 @@ main {
 
 .dashboard-sidebar {
   border-radius: var(--radius-md);
-  background: var(--color-surface);
+  background: #f4f8fc;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-soft);
 }
 
 .dashboard-main {
   border-radius: var(--radius-md);
-  background: var(--color-surface);
+  background: #f8fbfd;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-soft);
 }
@@ -2753,8 +2753,17 @@ main {
   position: sticky;
   top: 110px;
   display: grid;
-  gap: 20px;
+  gap: 14px;
+  align-content: start;
   padding: 28px;
+}
+
+.dashboard-sidebar > :is(.eyebrow, h2, p, nav) {
+  margin: 0;
+}
+
+.dashboard-sidebar > p {
+  max-width: 28ch;
 }
 
 .dashboard-sidebar__close,
@@ -2782,6 +2791,7 @@ body.dashboard-sidebar-open {
 .dashboard-nav {
   display: grid;
   gap: 10px;
+  margin-top: 4px;
 }
 
 .dashboard-nav__link {
@@ -2791,6 +2801,7 @@ body.dashboard-sidebar-open {
   padding: 12px 14px;
   border-radius: 16px;
   font-weight: 700;
+  touch-action: manipulation;
   transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
 }
 
@@ -2898,8 +2909,9 @@ body.dashboard-sidebar-open {
   gap: 14px;
   padding: 24px 26px;
   border-radius: 28px;
-  background: linear-gradient(135deg, rgba(29, 52, 97, 0.1), rgba(55, 105, 150, 0.08));
+  background: rgba(29, 52, 97, 0.06);
   border: 1px solid rgba(29, 52, 97, 0.14);
+  box-shadow: var(--shadow-soft);
 }
 
 .dashboard-highlight h2 {
@@ -4453,6 +4465,7 @@ select:focus-visible {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-image: url('../images/hero/gradient-a.jpg');
 }
 
 .page-checkout .utility-section {
@@ -4562,10 +4575,6 @@ select:focus-visible {
 
 .page-auth-shell .auth-section {
   background-image: url('../images/hero/codioful-formerly-gradienta-cM0eykq2L7M-unsplash.jpg');
-}
-
-.page-dashboard-shell .dashboard-section {
-  background-image: url('../images/hero/gradient-a.jpg');
 }
 
 .page-checkout .utility-section {
@@ -6849,20 +6858,22 @@ body:not(.page-about) .article-hero p {
     position: fixed;
     top: 0;
     inset-inline-start: 0;
-    inset-inline-end: auto;
+    inset-inline-end: 0;
     z-index: 120;
-    width: min(88vw, 360px);
+    width: 100vw;
     height: 100dvh;
-    padding: 84px 24px 24px;
+    padding: 88px 20px 28px;
     overflow-y: auto;
-    border-radius: 0 30px 30px 0;
-    transform: translateX(calc(-100% - 24px));
+    border-radius: 0;
+    border-inline-end: 1px solid var(--color-border);
+    transform: translateX(-100%);
     visibility: hidden;
     pointer-events: none;
     transition: transform var(--transition-medium), box-shadow var(--transition-medium);
-    box-shadow: 0 24px 54px rgba(8, 18, 33, 0.22);
+    box-shadow: none;
   }
 
+  .page-dashboard-shell .dashboard-sidebar.is-open,
   body.dashboard-sidebar-open .page-dashboard-shell .dashboard-sidebar {
     transform: translateX(0);
     visibility: visible;
@@ -6875,12 +6886,13 @@ body:not(.page-about) .article-hero p {
     z-index: 110;
     border: 0;
     padding: 0;
-    background: rgba(8, 18, 33, 0.42);
+    background: transparent;
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--transition-medium);
   }
 
+  .page-dashboard-shell .dashboard-sidebar-backdrop.is-active,
   body.dashboard-sidebar-open .page-dashboard-shell .dashboard-sidebar-backdrop {
     opacity: 1;
     pointer-events: auto;
