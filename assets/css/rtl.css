@@ -38,6 +38,12 @@ html[dir="rtl"] .dashboard-nav__link {
   flex-direction: row-reverse;
 }
 
+html[dir="rtl"] .dashboard-nav__link:hover,
+html[dir="rtl"] .dashboard-nav__link.is-current,
+html[dir="rtl"] .dashboard-nav__link[aria-current="page"] {
+  transform: translateX(-4px);
+}
+
 html[dir="rtl"] .text-link {
   flex-direction: row-reverse;
 }
@@ -95,6 +101,19 @@ html[dir="rtl"] .process-copy {
 }
 
 html[dir="rtl"] .dashboard-heading {
+  text-align: right;
+}
+
+html[dir="rtl"] .dashboard-heading > .eyebrow,
+html[dir="rtl"] .dashboard-heading > h1,
+html[dir="rtl"] .dashboard-heading > p {
+  justify-self: end;
+}
+
+html[dir="rtl"] .dashboard-heading__bar > div:first-child,
+html[dir="rtl"] .dashboard-summary__item,
+html[dir="rtl"] .dashboard-card,
+html[dir="rtl"] .dashboard-sidebar {
   text-align: right;
 }
 
@@ -179,4 +198,17 @@ html[dir="rtl"] .footer-bottom {
 
 html[dir="rtl"] .utility-bar__inner {
   direction: rtl;
+}
+
+@media (max-width: 1024px) {
+  html[dir="rtl"] .page-dashboard-shell .dashboard-sidebar {
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+    border-radius: 30px 0 0 30px;
+    transform: translateX(calc(100% + 24px));
+  }
+
+  html[dir="rtl"] body.dashboard-sidebar-open .page-dashboard-shell .dashboard-sidebar {
+    transform: translateX(0);
+  }
 }
