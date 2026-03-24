@@ -5672,6 +5672,17 @@ select:focus-visible {
   align-items: stretch;
 }
 
+.page-courses .page-hero .split-feature {
+  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+  align-items: start;
+}
+
+.page-courses .page-hero .split-feature > .media-frame {
+  height: auto;
+  max-width: 100%;
+  align-self: start;
+}
+
 .page-home .hero-copy {
   grid-area: copy;
   align-content: start;
