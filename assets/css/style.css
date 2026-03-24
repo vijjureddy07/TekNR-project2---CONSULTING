@@ -798,6 +798,13 @@ main {
   padding: 16px 0 10px;
 }
 
+.mobile-menu__controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 6px;
+}
+
 /* ============================== Footer ============================== */
 
 .site-footer {
@@ -880,6 +887,7 @@ main {
 
 .brand--footer .brand__name {
   color: #ffffff;
+  white-space: normal;
 }
 
 .brand--footer .brand__mark {
@@ -2976,8 +2984,20 @@ body.dashboard-sidebar-open {
   }
 
   .navbar {
-    grid-template-columns: auto auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     justify-content: space-between;
+  }
+
+  .brand {
+    gap: 12px;
+  }
+
+  .brand__name {
+    font-size: clamp(0.94rem, 1vw + 0.72rem, 1.04rem);
+  }
+
+  .brand--footer .brand__name {
+    display: block;
   }
 
   .desktop-nav {
@@ -3494,7 +3514,13 @@ body.dashboard-sidebar-open {
   }
 
   .brand__name {
-    display: none;
+    display: block;
+    font-size: 0.92rem;
+  }
+
+  .brand--footer .brand__name {
+    display: block;
+    font-size: 0.92rem;
   }
 
   .brand__mark {

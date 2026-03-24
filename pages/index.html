@@ -66,10 +66,6 @@
       <a class="button button--ghost" href="login.html">Login</a>
     </div>
     <div class="navbar__actions navbar__actions--mobile">
-      <button class="icon-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
-        <span class="material-symbols-outlined" aria-hidden="true">dark_mode</span>
-      </button>
-      <button class="icon-toggle direction-toggle" type="button" data-rtl-toggle aria-label="Switch to RTL layout">LTR</button>
       <button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
         <span class="material-symbols-outlined" aria-hidden="true">menu</span>
         <span class="sr-only">Open menu</span>
@@ -78,6 +74,12 @@
   </div>
   <div id="mobile-menu" class="mobile-menu" data-mobile-menu hidden>
     <div class="container mobile-menu__inner">
+      <div class="mobile-menu__controls" role="group" aria-label="Display settings">
+        <button class="icon-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+          <span class="material-symbols-outlined" aria-hidden="true">dark_mode</span>
+        </button>
+        <button class="icon-toggle direction-toggle" type="button" data-rtl-toggle aria-label="Switch to RTL layout">LTR</button>
+      </div>
       <details class="mobile-dropdown">
         <summary>Home</summary>
         <div class="mobile-dropdown__menu">
