@@ -8106,6 +8106,12 @@ p, li, label {
   justify-content: flex-start;
 }
 
+.page-hero-omnis--tall {
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+}
+
 /* Industries strip */
 .industries-grid {
   display: grid;
