@@ -1081,6 +1081,73 @@ html[data-theme="dark"] .section > .container p {
   color: var(--color-text-muted);
 }
 
+/* Service rows in dark mode */
+html[data-theme="dark"] .service-rows {
+  border-top-color: rgba(82, 188, 224, 0.12);
+}
+html[data-theme="dark"] .service-row {
+  border-bottom-color: rgba(82, 188, 224, 0.12);
+}
+html[data-theme="dark"] .service-row__content h3,
+html[data-theme="dark"] .service-row__content p {
+  color: var(--color-text);
+}
+html[data-theme="dark"] .service-row__content p {
+  color: var(--color-text-muted);
+}
+
+/* Process timeline dark */
+html[data-theme="dark"] .process-timeline {
+  border-top-color: rgba(82, 188, 224, 0.12);
+}
+html[data-theme="dark"] .process-timeline__step {
+  border-right-color: rgba(82, 188, 224, 0.12);
+}
+html[data-theme="dark"] .process-timeline__num {
+  color: rgba(82, 188, 224, 0.22);
+}
+
+/* Featured course dark */
+html[data-theme="dark"] .featured-course__main {
+  background: rgba(10, 28, 38, 0.94);
+  border-color: rgba(82, 188, 224, 0.14);
+}
+html[data-theme="dark"] .featured-course__body h3,
+html[data-theme="dark"] .featured-course__body p {
+  color: var(--color-text);
+}
+html[data-theme="dark"] .featured-course__body p { color: var(--color-text-muted); }
+html[data-theme="dark"] .featured-course__side,
+html[data-theme="dark"] .mini-course-row {
+  border-color: rgba(82, 188, 224, 0.12);
+}
+html[data-theme="dark"] .mini-course-row h4 { color: var(--color-text); }
+html[data-theme="dark"] .mini-course-row p { color: var(--color-text-muted); }
+html[data-theme="dark"] .mini-course-row--footer span { color: var(--color-text-muted); }
+
+/* Industries tags dark */
+html[data-theme="dark"] .industries-tags__tag {
+  background: rgba(10, 28, 38, 0.86);
+  border-color: rgba(82, 188, 224, 0.18);
+  color: rgba(246, 252, 253, 0.82);
+}
+html[data-theme="dark"] .industries-tags__tag:hover {
+  border-color: #52bce0;
+  color: #52bce0;
+  background: rgba(38, 172, 217, 0.08);
+}
+
+/* Industries/insights headers dark */
+html[data-theme="dark"] .industries-header h2,
+html[data-theme="dark"] .insights-header h2 {
+  color: var(--color-text);
+}
+
+/* CTA full dark */
+html[data-theme="dark"] .cta-full {
+  border-color: rgba(82, 188, 224, 0.12);
+}
+
 /* Hover border highlight for cards in dark mode */
 html[data-theme="dark"] .service-v2-card:hover,
 html[data-theme="dark"] .step-card:hover,
