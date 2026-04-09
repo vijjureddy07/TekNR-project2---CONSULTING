@@ -7135,7 +7135,7 @@ body:not(.page-about) .article-hero p {
   border-radius: 20px;
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  box-shadow: 0 4px 16px rgba(8,18,38,0.06);
+  box-shadow: 0 4px 16px rgba(8,34,43,0.06);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
   overflow: hidden;
 }
@@ -7278,7 +7278,7 @@ body:not(.page-about) .article-hero p {
   border-radius: 20px;
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  box-shadow: 0 4px 16px rgba(8,18,38,0.05);
+  box-shadow: 0 4px 16px rgba(8,34,43,0.05);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -7690,7 +7690,7 @@ p, li, label {
   border-radius: 20px;
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  box-shadow: 0 4px 16px rgba(8,18,38,0.05);
+  box-shadow: 0 4px 16px rgba(8,34,43,0.05);
   overflow: hidden;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
