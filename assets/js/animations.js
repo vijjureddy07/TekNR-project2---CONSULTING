@@ -282,6 +282,172 @@
     });
   }
 
+  /* ============================== Parallax Sections ============================== */
+  function initParallax() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    /* Parallax on hero images */
+    gsap.utils.toArray('.about-dark-split__media img, .featured-story__media img, .featured-course__image img').forEach(function (img) {
+      gsap.to(img, {
+        scrollTrigger: {
+          trigger: img.closest('section') || img.parentElement,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.2
+        },
+        y: 60,
+        ease: 'none'
+      });
+    });
+
+    /* Subtle scale on teal-mesh blobs */
+    gsap.utils.toArray('.teal-mesh').forEach(function (mesh) {
+      gsap.to(mesh, {
+        scrollTrigger: {
+          trigger: mesh.parentElement,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 2
+        },
+        scale: 1.15,
+        rotate: 8,
+        ease: 'none'
+      });
+    });
+  }
+
+  /* ============================== Text Reveal (Split Line) ============================== */
+  function initTextReveal() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    /* Staggered word reveal on page-hero headings */
+    gsap.utils.toArray('.page-hero-omnis h1').forEach(function (h1) {
+      var text = h1.textContent;
+      var words = text.split(' ');
+      h1.innerHTML = words.map(function (w) {
+        return '<span class="word-reveal" style="display:inline-block;overflow:hidden;"><span style="display:inline-block;">' + w + '</span></span>';
+      }).join(' ');
+
+      var spans = h1.querySelectorAll('.word-reveal > span');
+      gsap.from(spans, {
+        y: '110%',
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.04,
+        ease: 'power3.out',
+        delay: 0.15
+      });
+    });
+
+    /* Staggered reveal on stats-bar numbers */
+    gsap.utils.toArray('.stats-bar__num').forEach(function (el) {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+        scale: 0.6,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'back.out(1.7)'
+      });
+    });
+  }
+
+  /* ============================== Cursor Follower ============================== */
+  function initCursorFollower() {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    if (typeof gsap === 'undefined') return;
+
+    var dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    document.body.appendChild(dot);
+
+    var pos = { x: 0, y: 0 };
+    document.addEventListener('mousemove', function (e) {
+      pos.x = e.clientX;
+      pos.y = e.clientY;
+      dot.classList.add('is-active');
+    });
+
+    gsap.ticker.add(function () {
+      gsap.set(dot, { x: pos.x - 4, y: pos.y - 4 });
+    });
+
+    /* Expand on interactive elements */
+    document.querySelectorAll('a, button, .card, .plan-card, .case-card, .article-card-v2').forEach(function (el) {
+      el.addEventListener('mouseenter', function () { dot.classList.add('is-hovering'); });
+      el.addEventListener('mouseleave', function () { dot.classList.remove('is-hovering'); });
+    });
+
+    document.addEventListener('mouseleave', function () { dot.classList.remove('is-active'); });
+  }
+
+  /* ============================== Staggered Card Entrance ============================== */
+  function initStaggeredCards() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    /* Service rows stagger from left */
+    gsap.utils.toArray('.service-rows').forEach(function (container) {
+      var rows = container.querySelectorAll('.service-row');
+      gsap.from(rows, {
+        scrollTrigger: { trigger: container, start: 'top 85%', once: true },
+        x: -40,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power2.out'
+      });
+    });
+
+    /* Process timeline steps stagger up */
+    gsap.utils.toArray('.process-timeline').forEach(function (container) {
+      var steps = container.querySelectorAll('.process-timeline__step');
+      gsap.from(steps, {
+        scrollTrigger: { trigger: container, start: 'top 85%', once: true },
+        y: 60,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.15,
+        ease: 'power3.out'
+      });
+    });
+
+    /* Industries tags pop in */
+    gsap.utils.toArray('.industries-tags').forEach(function (container) {
+      var tags = container.querySelectorAll('.industries-tags__tag');
+      gsap.from(tags, {
+        scrollTrigger: { trigger: container, start: 'top 88%', once: true },
+        scale: 0.7,
+        opacity: 0,
+        duration: 0.4,
+        stagger: 0.05,
+        ease: 'back.out(1.4)'
+      });
+    });
+
+    /* Article cards v2 slide up with stagger */
+    gsap.utils.toArray('.article-grid-v2').forEach(function (container) {
+      var cards = container.querySelectorAll('.article-card-v2');
+      gsap.from(cards, {
+        scrollTrigger: { trigger: container, start: 'top 85%', once: true },
+        y: 48,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.12,
+        ease: 'power2.out'
+      });
+    });
+
+    /* CTA full slide in */
+    gsap.utils.toArray('.cta-full').forEach(function (el) {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+      });
+    });
+  }
+
   /* ============================== Boot ============================== */
   function initAnimations() {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
@@ -298,11 +464,15 @@
       initScrollReveals();
       initCounters();
       initHeadingLines();
+      initParallax();
+      initTextReveal();
+      initStaggeredCards();
 
-      /* Magnetic + tilt — desktop only */
+      /* Magnetic + tilt + cursor — desktop only */
       if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         initMagneticButtons();
         initImageTilt();
+        initCursorFollower();
       }
     });
   }
