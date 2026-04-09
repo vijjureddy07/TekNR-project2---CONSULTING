@@ -381,6 +381,30 @@
     });
   }
 
+  /* ============================== Password Toggle ============================== */
+  function initPasswordToggles() {
+    document.querySelectorAll('.password-toggle').forEach(function (button) {
+      var field = button.closest('.password-field');
+      var input = field ? field.querySelector('input[type="password"], input[type="text"]') : null;
+      var icon = button.querySelector('.material-symbols-outlined');
+
+      if (!input) {
+        return;
+      }
+
+      button.addEventListener('click', function () {
+        var isHidden = input.type === 'password';
+        input.type = isHidden ? 'text' : 'password';
+
+        if (icon) {
+          icon.textContent = isHidden ? 'visibility_off' : 'visibility';
+        }
+
+        button.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+      });
+    });
+  }
+
   /* ============================== Shared Bootstrap ============================== */
   function initMain() {
     var loader = createPageLoader();
@@ -388,6 +412,7 @@
     initNavigation();
     initPreferences();
     initFormValidation();
+    initPasswordToggles();
 
     if (typeof window.initDashboard === 'function') {
       window.initDashboard();

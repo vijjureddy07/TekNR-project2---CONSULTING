@@ -11,7 +11,7 @@
   <link rel="icon" type="image/svg+xml" href="../assets/images/branding/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,500,0,0" rel="stylesheet">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfessionalService","@id":"https://northlineadvisory.example/#business","name":"Northline Advisory","url":"https://northlineadvisory.example/","description":"Small business coaching, consulting, digital programs, and a client portal for founder-led service businesses.","serviceType":["Business Coaching","Business Consulting","Digital Courses","Client Portal Support"],"areaServed":"United States","email":"hello@northlineadvisory.com"},{"@type":"WebPage","@id":"https://northlineadvisory.example/case-studies.html#webpage","url":"https://northlineadvisory.example/case-studies.html","name":"Case Studies | Northline Advisory","description":"Read case studies showing how clearer offers, smoother delivery systems, and digital support improve growth and client experience.","isPartOf":{"@id":"https://northlineadvisory.example/#business"}}]}</script>
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -104,11 +104,18 @@
 
         <main id="main-content">
 <!-- ============================== Case Studies Hero ============================== -->
-<section class="section page-hero page-hero--inner">
-  <div class="container inner-hero inner-hero--narrow" data-reveal>
-    <span class="eyebrow">Case studies</span>
-    <h1>Examples of how clearer offers and steadier systems improve the client experience.</h1>
-    <p>These snapshots show how strategic clarity, delivery redesign, and digital support can create more measurable progress for small business clients.</p>
+<section class="page-hero-omnis">
+  <div class="teal-mesh teal-mesh--1" aria-hidden="true"></div>
+  <div class="teal-mesh teal-mesh--2" aria-hidden="true"></div>
+  <div class="teal-mesh teal-mesh--3" aria-hidden="true"></div>
+  <div class="container page-hero-omnis__inner">
+    <span class="eyebrow eyebrow--light">Case Studies</span>
+    <h1>Real results from founder-led businesses.</h1>
+    <p>How strategic clarity, delivery redesign, and digital support create measurable progress for small business clients.</p>
+    <div class="hero-actions">
+      <a class="button" href="contact-us.html">Get similar results</a>
+      <a class="button button--ghost-light" href="services.html">See how we work</a>
+    </div>
   </div>
 </section>
 
@@ -275,7 +282,15 @@
   </div>
 </footer>
         <!-- ============================== Scripts ============================== -->
+<!-- Lenis smooth scroll -->
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<!-- GSAP core + ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<!-- Site logic -->
 <script src="../assets/js/main.js" defer></script>
+<!-- Animations -->
+<script src="../assets/js/animations.js" defer></script>
 
       </body>
     </html>
