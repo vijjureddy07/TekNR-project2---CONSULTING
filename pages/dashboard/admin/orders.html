@@ -4,34 +4,35 @@
 <!-- ============================== Head ============================== -->
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Orders | Northline Advisory</title>
-  <meta name="description" content="Review payments, product orders, and billing placeholders.">
+  <meta name="description" content="Review payments, product orders, and billing workflows.">
   <meta name="robots" content="index, follow">
-  <link rel="icon" type="image/svg+xml" href="../../../assets/images/branding/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/images/branding/favicon.svg?v=7">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,500,0,0" rel="stylesheet">
-  <link rel="stylesheet" href="../../../assets/css/style.css">
-  <link rel="stylesheet" href="../../../assets/css/dark-mode.css">
-  <link rel="stylesheet" href="../../../assets/css/rtl.css">
+  <link rel="stylesheet" href="../../../assets/css/style.css?v=8">
+  <link rel="stylesheet" href="../../../assets/css/dark-mode.css?v=7">
+  <link rel="stylesheet" href="../../../assets/css/rtl.css?v=7">
 </head>
 <!-- ============================== Body ============================== -->
 <body class="site-body page-dashboard-shell">
 <!-- ============================== Utility Bar ============================== -->
 <div class="utility-bar">
   <div class="container utility-bar__inner">
-    <a class="utility-bar__brand" href="../../index.html">
-      <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-      <span>Northline Advisory</span>
+    <a class="utility-bar__brand utility-bar__brand--mark" href="../../index.html" aria-label="Northline Advisory home">
+      <span class="utility-bar__logomark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="36" height="36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15 35V13L33 35V13" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="33" cy="13" r="2.6" fill="currentColor"/></svg>
+      </span>
+      <span class="utility-bar__brand-text">Northline Advisory</span>
     </a>
     <div class="utility-bar__actions">
       <button class="icon-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
         <span class="material-symbols-outlined" aria-hidden="true">dark_mode</span>
       </button>
       <button class="icon-toggle direction-toggle" type="button" data-rtl-toggle aria-label="Switch to RTL layout">LTR</button>
-      <a class="button button--ghost" href="../../index.html">Exit</a>
     </div>
   </div>
 </div>
@@ -45,16 +46,16 @@
     <aside class="dashboard-sidebar" data-reveal><span class="eyebrow eyebrow--small">Admin area</span><h2>Admin Panel</h2><p>Manage clients, content, bookings, and reporting.</p><nav class="dashboard-nav"><a class="dashboard-nav__link" href="admin-dashboard.html"><span class="material-symbols-outlined" aria-hidden="true">dashboard</span>Overview</a><a class="dashboard-nav__link" href="bookings.html"><span class="material-symbols-outlined" aria-hidden="true">event_note</span>Bookings</a><a class="dashboard-nav__link" href="courses.html"><span class="material-symbols-outlined" aria-hidden="true">school</span>Courses</a><a class="dashboard-nav__link" href="content.html"><span class="material-symbols-outlined" aria-hidden="true">description</span>Content</a><a class="dashboard-nav__link" href="reports.html"><span class="material-symbols-outlined" aria-hidden="true">bar_chart</span>Reports</a><a class="dashboard-nav__link" href="clients.html"><span class="material-symbols-outlined" aria-hidden="true">groups</span>Clients</a><a class="dashboard-nav__link is-current" href="orders.html"><span class="material-symbols-outlined" aria-hidden="true">payments</span>Orders</a><a class="dashboard-nav__link" href="settings.html"><span class="material-symbols-outlined" aria-hidden="true">settings</span>Settings</a></nav></aside>
     <!-- ============================== Dashboard Main ============================== -->
     <div class="dashboard-main" data-reveal>
-      <div class="dashboard-heading"><span class="eyebrow">Orders</span><h1>Orders</h1><p>Review payments, product orders, and billing placeholders.</p></div>
-      <div class="dashboard-grid"><article class="dashboard-card card"><div class="media-frame media-frame--article"><img loading="eager" fetchpriority="high" decoding="async" src="../../../assets/images/dashboard/orders-photo.jpg" alt="Admin reviewing consulting orders and payment status"></div><h3>Recent orders</h3><ul class="icon-list"><li>Strategy Intensive — Paid</li><li>Program Bundle — Paid</li><li>Retainer Deposit — Pending</li></ul></article><article class="dashboard-card card"><h3>Payment placeholders</h3><p>Stripe and PayPal connection points remain ready for integration.</p><ul class="icon-list"><li>Stripe can power direct checkout and recurring retainers</li><li>PayPal can remain as a secondary purchase option</li><li>Invoice confirmation can trigger dashboard access automatically</li></ul></article></div>
+      <div class="dashboard-heading"><span class="eyebrow">Orders</span><h1>Orders</h1><p>Review payments, product orders, and billing workflows.</p></div>
+      <div class="dashboard-grid"><article class="dashboard-card card"><div class="media-frame media-frame--article"><img loading="eager" fetchpriority="high" decoding="async" src="../../../assets/images/dashboard/orders-photo.jpg" alt="Admin reviewing consulting orders and payment status"></div><h3>Recent orders</h3><ul class="icon-list"><li>Strategy Intensive — Paid</li><li>Program Bundle — Paid</li><li>Retainer Deposit — Pending</li></ul></article><article class="dashboard-card card"><h3>Payment workflows</h3><p>Stripe and PayPal connection points remain ready for integration.</p><ul class="icon-list"><li>Stripe can power direct checkout and recurring retainers</li><li>PayPal can remain as a secondary purchase option</li><li>Invoice confirmation can trigger dashboard access automatically</li></ul></article></div>
     </div>
   </div>
 </section>
 
         </main>
         <!-- ============================== Scripts ============================== -->
-<script src="../../../assets/js/dashboard.js" defer></script>
-<script src="../../../assets/js/main.js" defer></script>
+<script src="../../../assets/js/dashboard.js?v=9" defer></script>
+<script src="../../../assets/js/main.js?v=10" defer></script>
 
       </body>
     </html>

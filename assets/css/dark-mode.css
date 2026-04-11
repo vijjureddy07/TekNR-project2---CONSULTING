@@ -185,6 +185,23 @@ html[data-theme="dark"] .card {
   border-color: rgba(82, 188, 224, 0.12);
 }
 
+html[data-theme="dark"] .card::after,
+html[data-theme="dark"] .service-card::after,
+html[data-theme="dark"] .case-card::after,
+html[data-theme="dark"] .article-card::after,
+html[data-theme="dark"] .article-card-v2::after,
+html[data-theme="dark"] .team-card::after,
+html[data-theme="dark"] .plan-card::after,
+html[data-theme="dark"] .portal-card::after,
+html[data-theme="dark"] .dashboard-card::after,
+html[data-theme="dark"] .contact-item::after,
+html[data-theme="dark"] .stat-card::after,
+html[data-theme="dark"] .process-step::after,
+html[data-theme="dark"] .cta-banner::after {
+  background: radial-gradient(900px circle at 20% 10%, rgba(82, 188, 224, 0.18), transparent 42%),
+              radial-gradient(900px circle at 80% 90%, rgba(38, 172, 217, 0.10), transparent 48%);
+}
+
 html[data-theme="dark"] .plan-card {
   background: rgba(10, 18, 33, 0.92);
   color: var(--color-text);
@@ -261,6 +278,26 @@ html[data-theme="dark"] .auth-panel--modal {
   border-color: rgba(173, 199, 230, 0.14);
 }
 
+html[data-theme="dark"] .auth-divider {
+  color: rgba(247, 251, 255, 0.74);
+}
+
+html[data-theme="dark"] .auth-divider::before,
+html[data-theme="dark"] .auth-divider::after {
+  background: rgba(173, 199, 230, 0.18);
+}
+
+html[data-theme="dark"] .auth-social-btn {
+  background: rgba(8, 14, 26, 0.92);
+  color: rgba(247, 251, 255, 0.92);
+  border-color: rgba(173, 199, 230, 0.18);
+}
+
+html[data-theme="dark"] .auth-social-btn:hover {
+  background: rgba(8, 14, 26, 0.98);
+  border-color: rgba(82, 188, 224, 0.28);
+}
+
 html[data-theme="dark"] .detail-hero__panel {
   background: rgba(10, 18, 33, 0.92);
   color: var(--color-text);
@@ -311,6 +348,22 @@ html[data-theme="dark"] .icon-toggle {
 html[data-theme="dark"] .menu-button {
   background: rgba(14, 24, 44, 0.96);
   border-color: rgba(173, 199, 230, 0.22);
+}
+
+html[data-theme="dark"] .scroll-carousel__btn {
+  background: rgba(8, 14, 26, 0.92);
+  color: rgba(247, 251, 255, 0.92);
+  border-color: rgba(173, 199, 230, 0.18);
+  box-shadow: rgba(0,0,0,0.28) 0px 4px 12px, rgba(0,0,0,0.16) 0px 1px 4px;
+}
+
+html[data-theme="dark"] .scroll-carousel__btn:hover {
+  background: rgba(8, 14, 26, 0.98);
+  border-color: rgba(82, 188, 224, 0.28);
+}
+
+html[data-theme="dark"] .scroll-carousel__track::-webkit-scrollbar-thumb {
+  background: rgba(82, 188, 224, 0.22);
 }
 
 html[data-theme="dark"] .icon-toggle:hover {
@@ -487,6 +540,17 @@ html[data-theme="dark"] .auth-note a {
 
 html[data-theme="dark"] .section--contrast {
   background: linear-gradient(180deg, rgba(8, 34, 43, 0.98), rgba(6, 26, 34, 0.98));
+}
+
+html[data-theme="dark"] .section--contrast::before {
+  background:
+    radial-gradient(40% 55% at 8% 18%, rgba(82, 188, 224, 0.16), transparent 72%),
+    radial-gradient(35% 45% at 92% 78%, rgba(38, 172, 217, 0.12), transparent 76%);
+}
+
+html[data-theme="dark"] .hero-v2__float-chip {
+  background: rgba(8, 14, 26, 0.82);
+  border-color: rgba(173, 199, 230, 0.22);
 }
 
 html[data-theme="dark"] .eyebrow {
@@ -671,6 +735,14 @@ html[data-theme="dark"] .menu-button {
 html[data-theme="dark"] .media-frame {
   background: rgba(14, 24, 44, 0.92);
   border-color: rgba(173, 199, 230, 0.16);
+}
+
+html[data-theme="dark"] .media-frame::after {
+  border-color: rgba(82, 188, 224, 0.12);
+}
+
+html[data-theme="dark"] .media-frame:hover::after {
+  border-color: rgba(82, 188, 224, 0.34);
 }
 
 html[data-theme="dark"] body {
@@ -1038,6 +1110,14 @@ html[data-theme="dark"] .section--deep {
   background: #071820;
 }
 
+html[data-theme="dark"] .section--deep::before {
+  background: radial-gradient(circle, rgba(82, 188, 224, 0.18) 0%, transparent 70%);
+}
+
+html[data-theme="dark"] .section--deep::after {
+  background: radial-gradient(circle, rgba(38, 172, 217, 0.12) 0%, transparent 72%);
+}
+
 /* Form Cards */
 html[data-theme="dark"] .form-card {
   background: rgba(10, 28, 38, 0.96);
@@ -1066,6 +1146,22 @@ html[data-theme="dark"] .marquee-strip {
 }
 html[data-theme="dark"] .marquee-strip__item {
   color: rgba(246, 252, 253, 0.6);
+}
+
+/* Homepage offer strip */
+html[data-theme="dark"] .offer-strip__item {
+  background: rgba(10, 28, 38, 0.72);
+  border-color: rgba(82, 188, 224, 0.12);
+}
+html[data-theme="dark"] .offer-strip__item strong {
+  color: var(--color-text);
+}
+html[data-theme="dark"] .offer-strip__item span {
+  color: var(--color-text-muted);
+}
+html[data-theme="dark"] .offer-strip__icon {
+  background: rgba(82, 188, 224, 0.12);
+  color: var(--color-accent);
 }
 
 /* Section headings in white-background sections */
@@ -1169,18 +1265,21 @@ html[data-theme="dark"] .article-card:hover {
   box-shadow: 0 10px 32px rgba(0,0,0,0.44);
 }
 
-/* --- Dark mode advanced features --- */
+/* --- Dark mode advanced features (section fills — dark navy only, no light-teal washes) --- */
 html[data-theme="dark"] .section:not(.section--contrast):not(.section--deep):not(.section--warm):not(.section--tight) {
   background: linear-gradient(180deg, #08222b 0%, #0a2935 100%);
 }
+
 html[data-theme="dark"] .section--contrast {
   background: linear-gradient(165deg, #0c2e3c 0%, #0f3548 40%, #0a2935 100%);
 }
+
 html[data-theme="dark"] .section--warm {
   background: linear-gradient(170deg, #0d3040 0%, #0f3a4e 50%, #0a2935 100%);
   border-top-color: rgba(82, 188, 224, 0.08);
   border-bottom-color: rgba(82, 188, 224, 0.08);
 }
+
 html[data-theme="dark"] .card,
 html[data-theme="dark"] .plan-card,
 html[data-theme="dark"] .case-card {
@@ -1193,12 +1292,172 @@ html[data-theme="dark"] .glass-card {
   border-color: rgba(82, 188, 224, 0.15);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
-html[data-theme="dark"] .cursor-dot {
-  background: var(--color-cyan);
-}
+/* cursor-dot REMOVED */
 html[data-theme="dark"] .process-timeline__step:hover {
   background: rgba(82, 188, 224, 0.06);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
 }
 html[data-theme="dark"] .service-row:hover {
   background: rgba(82, 188, 224, 0.04);
+  border-left-color: var(--color-cyan);
+}
+
+/* --- Dark mode: industries tag hover --- */
+html[data-theme="dark"] .industries-tags__tag:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  background: rgba(82, 188, 224, 0.08);
+}
+
+/* --- Dark mode: stats bar hover --- */
+html[data-theme="dark"] .stats-bar__item:hover {
+  background: rgba(82, 188, 224, 0.04);
+}
+
+/* --- Dark mode: heading accent line --- */
+html[data-theme="dark"] .section-intro h2::after,
+html[data-theme="dark"] .section-intro--center h2::after {
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-accent));
+}
+
+/* --- Dark mode: CTA full hover --- */
+html[data-theme="dark"] .cta-full:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Dark mode: Home Page 2 unique components --- */
+html[data-theme="dark"] .pillar-card {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+}
+html[data-theme="dark"] .pillar-card:hover {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3);
+  border-color: rgba(82, 188, 224, 0.2);
+}
+html[data-theme="dark"] .pillar-card h3 { color: rgba(255,255,255,0.95); }
+html[data-theme="dark"] .pillar-card p { color: rgba(255,255,255,0.6); }
+html[data-theme="dark"] .pillar-card__icon {
+  background: linear-gradient(135deg, rgba(82, 188, 224, 0.15), rgba(38, 172, 217, 0.1));
+  color: var(--color-cyan);
+}
+html[data-theme="dark"] .program-tile {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+}
+html[data-theme="dark"] .program-tile:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(82, 188, 224, 0.2);
+}
+html[data-theme="dark"] .program-tile h3 { color: rgba(255,255,255,0.95); }
+html[data-theme="dark"] .program-tile p { color: rgba(255,255,255,0.6); }
+html[data-theme="dark"] .vertical-step__content h3 { color: rgba(255,255,255,0.95); }
+html[data-theme="dark"] .vertical-step__content p { color: rgba(255,255,255,0.6); }
+html[data-theme="dark"] .vertical-step__marker {
+  box-shadow: 0 0 0 6px var(--color-bg);
+}
+html[data-theme="dark"] .insight-featured__body h3 { color: rgba(255,255,255,0.95); }
+html[data-theme="dark"] .insight-featured__body p { color: rgba(255,255,255,0.6); }
+html[data-theme="dark"] .insight-list__item {
+  border-color: rgba(255,255,255,0.08);
+}
+html[data-theme="dark"] .insight-list__item:hover {
+  background: rgba(82, 188, 224, 0.04);
+}
+html[data-theme="dark"] .insight-list__item h4 { color: rgba(255,255,255,0.9); }
+html[data-theme="dark"] .featured-story__stat {
+  background: rgba(10, 28, 38, 0.9);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+html[data-theme="dark"] .featured-story__stat strong { color: var(--color-cyan); }
+html[data-theme="dark"] .featured-story__stat span { color: rgba(255,255,255,0.6); }
+
+/* ============================== Final Uniformity Overrides ============================== */
+html[data-theme="dark"] .section,
+html[data-theme="dark"] .section--warm,
+html[data-theme="dark"] .section--contrast,
+html[data-theme="dark"] .section--deep,
+html[data-theme="dark"] .section:nth-child(even) {
+  background: linear-gradient(180deg, #08222b 0%, #092634 100%) !important;
+}
+
+html[data-theme="dark"] .section + .section {
+  border-top: 1px solid rgba(82, 188, 224, 0.08);
+}
+
+/* Light-mode-only warm mist — hide in dark so sections stay deep navy. */
+html[data-theme="dark"] .section--warm::before {
+  display: none;
+}
+
+html[data-theme="dark"] .section--contrast::before,
+html[data-theme="dark"] .section--deep::before,
+html[data-theme="dark"] .section--deep::after {
+  opacity: 0.34;
+  filter: saturate(0.92);
+}
+
+html[data-theme="dark"] .testimonial-pullquote {
+  border-color: rgba(82, 188, 224, 0.14);
+  background: linear-gradient(165deg, rgba(9, 33, 45, 0.92), rgba(8, 28, 40, 0.90));
+}
+
+html[data-theme="dark"] .testimonial-pullquote__quote {
+  color: rgba(246, 252, 253, 0.92);
+}
+
+html[data-theme="dark"] .testimonial-pullquote__meta strong {
+  color: rgba(246, 252, 253, 0.96);
+}
+
+html[data-theme="dark"] .testimonial-pullquote__meta span {
+  color: rgba(246, 252, 253, 0.72);
+}
+
+html[data-theme="dark"] .page-home-alt .section:not(.hero-v2) .container {
+  border-color: rgba(82, 188, 224, 0.14);
+  background: linear-gradient(155deg, rgba(10, 39, 52, 0.76), rgba(8, 31, 42, 0.70));
+}
+
+/* Final stabilization: do not wrap every home-alt section in a container card. */
+html[data-theme="dark"] .page-home-alt .section:not(.hero-v2) .container {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Final QA motion tuning in dark mode */
+html[data-theme="dark"] .page-pricing .plan-card--featured::before {
+  opacity: 0.34;
+  animation-duration: 42s;
+}
+
+html[data-theme="dark"] .page-pricing .plan-card--featured :is(h2, h3, p, li, span, strong) {
+  color: rgba(246, 252, 253, 0.94) !important;
+}
+
+html[data-theme="dark"] .cta-full::before,
+html[data-theme="dark"] .featured-course__main::before,
+html[data-theme="dark"] .testimonial-wide::before {
+  opacity: 0.26;
+  animation-duration: 46s;
+}
+
+/* Final screenshot parity in dark mode */
+html[data-theme="dark"] .site-footer {
+  margin-top: 0 !important;
+}
+
+html[data-theme="dark"] .utility-bar__logomark {
+  background: rgba(246, 252, 253, 0.10);
+  box-shadow: inset 0 0 0 1px rgba(246, 252, 253, 0.14);
+  color: rgba(246, 252, 253, 0.94);
+}
+
+html[data-theme="dark"] .page-pricing .plan-card--featured {
+  background: linear-gradient(175deg, rgba(14, 58, 74, 0.94), rgba(10, 45, 58, 0.92));
+}
+
+html[data-theme="dark"] .page-pricing .plan-card--featured::before {
+  opacity: 0.36;
+  animation-duration: 30s;
 }

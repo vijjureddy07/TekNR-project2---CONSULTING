@@ -76,11 +76,50 @@
       return;
     }
 
+    function isModifiedClick(event, link) {
+      return event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        link.getAttribute('target') === '_blank' ||
+        link.hasAttribute('download');
+    }
+
     toggleButton.addEventListener('click', function () {
       var isOpen = toggleButton.getAttribute('aria-expanded') === 'true';
       toggleButton.setAttribute('aria-expanded', String(!isOpen));
       mobileMenu.hidden = isOpen;
       document.body.classList.toggle('menu-open', !isOpen);
+    });
+
+    mobileMenu.querySelectorAll('a[href]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        var href = link.getAttribute('href') || '';
+        var targetHref = link.href || href;
+
+        if (!href || href.charAt(0) === '#' || href.indexOf('javascript:') === 0) {
+          event.preventDefault();
+          closeMobileMenu(toggleButton, mobileMenu);
+          return;
+        }
+
+        if (isModifiedClick(event, link)) {
+          return;
+        }
+
+        if (link.pathname === window.location.pathname && link.search === window.location.search && link.hash === window.location.hash) {
+          event.preventDefault();
+          closeMobileMenu(toggleButton, mobileMenu);
+          return;
+        }
+
+        event.preventDefault();
+        closeMobileMenu(toggleButton, mobileMenu);
+
+        if (targetHref) {
+          window.location.href = targetHref;
+        }
+      });
     });
 
     window.addEventListener('resize', function () {
@@ -223,18 +262,18 @@
     return !field.value.trim();
   }
 
-  function isPlaceholderAction(form) {
+  function isFallbackAction(form) {
     var action = (form.getAttribute('action') || '').trim();
 
     if (!action) {
       return true;
     }
 
-    return action.indexOf('example.com') !== -1 || action.indexOf('placeholder') !== -1 || form.hasAttribute('data-placeholder-submit');
+    return action.indexOf('example.com') !== -1 || action.indexOf('/newsletter') !== -1 || form.hasAttribute('data-fallback-submit');
   }
 
   function getSuccessMessage(form) {
-    return form.getAttribute('data-success-message') || 'Thank you. This placeholder form is ready for provider hookup.';
+    return form.getAttribute('data-success-message') || 'Thank you. Your request has been received.';
   }
 
   function attachFieldHint(field) {
@@ -277,7 +316,7 @@
         var message = form.querySelector('.form-message');
         var invalidField = requiredFields.find(fieldIsInvalid);
         var successHref = form.getAttribute('data-submit-success-href');
-        var shouldInterceptSuccess = Boolean(successHref) || isPlaceholderAction(form);
+        var shouldInterceptSuccess = Boolean(successHref) || isFallbackAction(form);
 
         if (message) {
           message.classList.remove('is-error', 'is-success');
@@ -405,6 +444,30 @@
     });
   }
 
+  function initScrollCarousels() {
+    document.querySelectorAll('[data-scroll-carousel]').forEach(function (root) {
+      var track = root.querySelector('[data-scroll-carousel-track]');
+      if (!track) return;
+
+      var prev = root.querySelector('[data-scroll-carousel-prev]');
+      var next = root.querySelector('[data-scroll-carousel-next]');
+
+      function getStep() {
+        var first = track.querySelector(':scope > *');
+        if (!first) return Math.round(track.clientWidth * 0.9);
+        var rect = first.getBoundingClientRect();
+        return Math.max(240, Math.min(Math.round(rect.width + 16), Math.round(track.clientWidth * 0.9)));
+      }
+
+      function scrollByDir(dir) {
+        track.scrollBy({ left: dir * getStep(), behavior: 'smooth' });
+      }
+
+      if (prev) prev.addEventListener('click', function () { scrollByDir(-1); });
+      if (next) next.addEventListener('click', function () { scrollByDir(1); });
+    });
+  }
+
   /* ============================== Shared Bootstrap ============================== */
   function initMain() {
     var loader = createPageLoader();
@@ -419,6 +482,7 @@
     }
 
     initReveal();
+    initScrollCarousels();
 
     window.requestAnimationFrame(function () {
       hidePageLoader(loader);

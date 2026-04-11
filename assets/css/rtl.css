@@ -64,6 +64,39 @@ html[dir="rtl"] .section-intro {
   text-align: right;
 }
 
+html[dir="rtl"] .section-intro--center {
+  text-align: right;
+}
+
+/* Featured proof block: mirror copy alignment and stat grid for RTL. */
+html[dir="rtl"] .featured-story__content {
+  text-align: right;
+  justify-items: end;
+}
+
+html[dir="rtl"] .featured-story__stats {
+  direction: rtl;
+}
+
+html[dir="rtl"] .featured-story__stat {
+  text-align: right;
+  align-items: flex-end;
+}
+
+html[dir="rtl"] .hero-alt__copy {
+  text-align: right;
+  justify-items: end;
+}
+
+html[dir="rtl"] .hero-alt__rail {
+  direction: rtl;
+}
+
+html[dir="rtl"] .hero-alt__media-tag {
+  inset-inline-end: auto;
+  inset-inline-start: 18px;
+}
+
 html[dir="rtl"] .hero-copy {
   text-align: right;
 }

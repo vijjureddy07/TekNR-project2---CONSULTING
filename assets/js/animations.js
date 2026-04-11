@@ -38,7 +38,18 @@
 
     var tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    if (document.querySelector('.hero-v2__badge')) {
+    if (document.querySelector('.hero-alt')) {
+      tl.from('.hero-alt .hero-v2__badge', { opacity: 0, y: 14, duration: 0.55 })
+        .from('.hero-alt .hero-v2__heading', { opacity: 0, y: 40, duration: 0.85 }, '-=0.28')
+        .from('.hero-alt .hero-v2__sub', { opacity: 0, y: 22, duration: 0.65 }, '-=0.45')
+        .from('.hero-alt .hero-v2__actions', { opacity: 0, y: 18, duration: 0.55 }, '-=0.38')
+        .from('.hero-alt__media-wide', {
+          opacity: 0, y: 36, duration: 1, ease: 'power2.out'
+        }, 0.2)
+        .from('.hero-alt__metric', {
+          opacity: 0, y: 22, duration: 0.5, stagger: 0.1, ease: 'power2.out'
+        }, '-=0.75');
+    } else if (document.querySelector('.hero-v2__badge')) {
       tl.from('.hero-v2__badge',   { opacity: 0, y: 16, duration: 0.6 })
         .from('.hero-v2__heading', { opacity: 0, y: 48, duration: 0.9 }, '-=0.3')
         .from('.hero-v2__sub',     { opacity: 0, y: 28, duration: 0.7 }, '-=0.5')
@@ -51,19 +62,6 @@
         }, 0.25);
     }
 
-    /* Hero image parallax on scroll */
-    if (document.querySelector('.hero-v2__image-wrap img')) {
-      gsap.to('.hero-v2__image-wrap img', {
-        scrollTrigger: {
-          trigger: '.hero-v2',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1.5
-        },
-        y: 90,
-        ease: 'none'
-      });
-    }
   }
 
   /* ============================== Counter Animation ============================== */
@@ -100,32 +98,32 @@
   function initScrollReveals() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-    /* Section intros */
+    /* Section intros — keep subtle so content order feels natural */
     gsap.utils.toArray('.section-intro--center, .section-intro').forEach(function (el) {
       gsap.from(el, {
-        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
-        opacity: 0,
-        y: 36,
-        duration: 0.75,
+        immediateRender: false,
+        scrollTrigger: { trigger: el, start: 'top 96%', once: true },
+        opacity: 0.98,
+        y: 14,
+        duration: 0.45,
         ease: 'power2.out'
       });
     });
 
     /* Staggered card groups */
+    /* Note: .case-grid, .insight-list, .article-grid-v2 use initStaggeredCards — avoid double tweens */
     var cardGroups = [
       '.services-v2 .service-v2-card',
       '.steps-grid .step-card',
       '.testimonials-grid .testimonial-card',
       '.article-grid .article-card',
-      '.article-grid-v2 .article-card-v2',
       '.courses-preview-grid .course-preview-card',
       '.pricing-teaser .pricing-teaser-card',
       '.team-preview-grid .team-preview-card',
       '.industries-grid .industry-card',
       '.about-preview__values .about-preview__value',
       '.case-stats__numbers .case-stat-item',
-      '.service-grid .service-card',
-      '.case-grid .case-card'
+      '.service-grid .service-card'
     ];
 
     cardGroups.forEach(function (selector) {
@@ -134,6 +132,7 @@
 
       cards.forEach(function (card, i) {
         gsap.from(card, {
+          immediateRender: false,
           scrollTrigger: { trigger: card, start: 'top 90%', once: true },
           opacity: 0,
           y: 52,
@@ -147,6 +146,7 @@
     /* Trust strip items */
     gsap.utils.toArray('.trust-strip__item').forEach(function (el, i) {
       gsap.from(el, {
+        immediateRender: false,
         scrollTrigger: { trigger: el, start: 'top 95%', once: true },
         opacity: 0,
         x: -20,
@@ -172,31 +172,28 @@
     gsap.utils.toArray('[data-reveal]').forEach(function (el) {
       if (el.closest('.hero-v2')) return; /* hero handled separately */
       gsap.from(el, {
-        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
-        opacity: 0,
-        y: 32,
-        duration: 0.7,
+        immediateRender: false,
+        scrollTrigger: { trigger: el, start: 'top 97%', once: true },
+        opacity: 0.98,
+        y: 10,
+        duration: 0.4,
         ease: 'power2.out'
       });
     });
   }
 
-  /* ============================== Magnetic Buttons ============================== */
-  function initMagneticButtons() {
-    if (typeof gsap === 'undefined') return;
-
-    document.querySelectorAll('.button, .service-v2-card, .step-card, .testimonial-card').forEach(function (el) {
-      var strength = el.classList.contains('button') ? 0.28 : 0.08;
-
-      el.addEventListener('mousemove', function (e) {
-        var rect = el.getBoundingClientRect();
-        var x = (e.clientX - rect.left - rect.width  / 2) * strength;
-        var y = (e.clientY - rect.top  - rect.height / 2) * strength;
-        gsap.to(el, { x: x, y: y, duration: 0.4, ease: 'power2.out', overwrite: true });
+  /* ============================== Simple Button Hover ============================== */
+  function initSimpleButtonHover() {
+    /* Simple scale + glow on hover — no magnetic/dancing movement */
+    document.querySelectorAll('.button').forEach(function (el) {
+      el.style.transition = 'transform 0.25s ease, box-shadow 0.25s ease';
+      el.addEventListener('mouseenter', function () {
+        el.style.transform = 'translateY(-2px)';
+        el.style.boxShadow = '0 8px 24px rgba(23, 103, 130, 0.25)';
       });
-
       el.addEventListener('mouseleave', function () {
-        gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)', overwrite: true });
+        el.style.transform = 'translateY(0)';
+        el.style.boxShadow = '';
       });
     });
   }
@@ -243,6 +240,7 @@
     /* Inner page h1 headings */
     gsap.utils.toArray('.inner-hero h1, .page-hero h1').forEach(function (el) {
       gsap.from(el, {
+        immediateRender: false,
         scrollTrigger: { trigger: el, start: 'top 90%', once: true },
         opacity: 0,
         y: 32,
@@ -286,20 +284,6 @@
   function initParallax() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-    /* Parallax on hero images */
-    gsap.utils.toArray('.about-dark-split__media img, .featured-story__media img, .featured-course__image img').forEach(function (img) {
-      gsap.to(img, {
-        scrollTrigger: {
-          trigger: img.closest('section') || img.parentElement,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1.2
-        },
-        y: 60,
-        ease: 'none'
-      });
-    });
-
     /* Subtle scale on teal-mesh blobs */
     gsap.utils.toArray('.teal-mesh').forEach(function (mesh) {
       gsap.to(mesh, {
@@ -316,32 +300,47 @@
     });
   }
 
-  /* ============================== Text Reveal (Split Line) ============================== */
+  /* ============================== Text Reveal (Clean) ============================== */
   function initTextReveal() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-    /* Staggered word reveal on page-hero headings */
+    /* Clean fade + slide-up on page-hero headings — no DOM splitting */
     gsap.utils.toArray('.page-hero-omnis h1').forEach(function (h1) {
-      var text = h1.textContent;
-      var words = text.split(' ');
-      h1.innerHTML = words.map(function (w) {
-        return '<span class="word-reveal" style="display:inline-block;overflow:hidden;"><span style="display:inline-block;">' + w + '</span></span>';
-      }).join(' ');
+      gsap.from(h1, {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        delay: 0.1
+      });
+    });
 
-      var spans = h1.querySelectorAll('.word-reveal > span');
-      gsap.from(spans, {
-        y: '110%',
+    /* Fade in hero paragraphs */
+    gsap.utils.toArray('.page-hero-omnis p').forEach(function (p) {
+      gsap.from(p, {
+        y: 24,
         opacity: 0,
         duration: 0.8,
-        stagger: 0.04,
-        ease: 'power3.out',
-        delay: 0.15
+        ease: 'power2.out',
+        delay: 0.3
+      });
+    });
+
+    /* Fade in hero actions */
+    gsap.utils.toArray('.page-hero-omnis .hero-actions').forEach(function (el) {
+      gsap.from(el, {
+        y: 20,
+        opacity: 0,
+        duration: 0.7,
+        ease: 'power2.out',
+        delay: 0.45
       });
     });
 
     /* Staggered reveal on stats-bar numbers */
     gsap.utils.toArray('.stats-bar__num').forEach(function (el) {
       gsap.from(el, {
+        immediateRender: false,
         scrollTrigger: { trigger: el, start: 'top 88%', once: true },
         scale: 0.6,
         opacity: 0,
@@ -351,43 +350,32 @@
     });
   }
 
-  /* ============================== Cursor Follower ============================== */
-  function initCursorFollower() {
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    if (typeof gsap === 'undefined') return;
-
-    var dot = document.createElement('div');
-    dot.className = 'cursor-dot';
-    document.body.appendChild(dot);
-
-    var pos = { x: 0, y: 0 };
-    document.addEventListener('mousemove', function (e) {
-      pos.x = e.clientX;
-      pos.y = e.clientY;
-      dot.classList.add('is-active');
-    });
-
-    gsap.ticker.add(function () {
-      gsap.set(dot, { x: pos.x - 4, y: pos.y - 4 });
-    });
-
-    /* Expand on interactive elements */
-    document.querySelectorAll('a, button, .card, .plan-card, .case-card, .article-card-v2').forEach(function (el) {
-      el.addEventListener('mouseenter', function () { dot.classList.add('is-hovering'); });
-      el.addEventListener('mouseleave', function () { dot.classList.remove('is-hovering'); });
-    });
-
-    document.addEventListener('mouseleave', function () { dot.classList.remove('is-active'); });
-  }
+  /* Cursor follower REMOVED per user request */
 
   /* ============================== Staggered Card Entrance ============================== */
   function initStaggeredCards() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
+    /* Offer strip — stagger up */
+    gsap.utils.toArray('.offer-strip').forEach(function (container) {
+      var items = container.querySelectorAll('.offer-strip__item');
+      if (!items.length) return;
+      gsap.from(items, {
+        immediateRender: false,
+        scrollTrigger: { trigger: container, start: 'top 85%', once: true },
+        y: 28,
+        opacity: 0,
+        duration: 0.55,
+        stagger: 0.12,
+        ease: 'power2.out'
+      });
+    });
+
     /* Service rows stagger from left */
     gsap.utils.toArray('.service-rows').forEach(function (container) {
       var rows = container.querySelectorAll('.service-row');
       gsap.from(rows, {
+        immediateRender: false,
         scrollTrigger: { trigger: container, start: 'top 85%', once: true },
         x: -40,
         opacity: 0,
@@ -401,6 +389,7 @@
     gsap.utils.toArray('.process-timeline').forEach(function (container) {
       var steps = container.querySelectorAll('.process-timeline__step');
       gsap.from(steps, {
+        immediateRender: false,
         scrollTrigger: { trigger: container, start: 'top 85%', once: true },
         y: 60,
         opacity: 0,
@@ -414,6 +403,7 @@
     gsap.utils.toArray('.industries-tags').forEach(function (container) {
       var tags = container.querySelectorAll('.industries-tags__tag');
       gsap.from(tags, {
+        immediateRender: false,
         scrollTrigger: { trigger: container, start: 'top 88%', once: true },
         scale: 0.7,
         opacity: 0,
@@ -427,6 +417,7 @@
     gsap.utils.toArray('.article-grid-v2').forEach(function (container) {
       var cards = container.querySelectorAll('.article-card-v2');
       gsap.from(cards, {
+        immediateRender: false,
         scrollTrigger: { trigger: container, start: 'top 85%', once: true },
         y: 48,
         opacity: 0,
@@ -439,11 +430,125 @@
     /* CTA full slide in */
     gsap.utils.toArray('.cta-full').forEach(function (el) {
       gsap.from(el, {
+        immediateRender: false,
         scrollTrigger: { trigger: el, start: 'top 90%', once: true },
         y: 40,
         opacity: 0,
         duration: 0.8,
         ease: 'power3.out'
+      });
+    });
+
+    /* Pillar cards — stagger with scale */
+    gsap.utils.toArray('.pillar-cards').forEach(function (container) {
+      var cards = container.querySelectorAll('.pillar-card');
+      gsap.from(cards, {
+        immediateRender: false,
+        scrollTrigger: { trigger: container, start: 'top 85%', once: true },
+        y: 50,
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.7,
+        stagger: 0.12,
+        ease: 'power3.out'
+      });
+    });
+
+    /* Vertical steps — stagger from left */
+    gsap.utils.toArray('.vertical-steps').forEach(function (container) {
+      var steps = container.querySelectorAll('.vertical-step');
+      gsap.from(steps, {
+        immediateRender: false,
+        scrollTrigger: { trigger: container, start: 'top 85%', once: true },
+        x: -30,
+        opacity: 0,
+        duration: 0.65,
+        stagger: 0.15,
+        ease: 'power2.out'
+      });
+    });
+
+    /* Testimonial wide — fade scale */
+    gsap.utils.toArray('.testimonial-wide').forEach(function (el) {
+      gsap.from(el, {
+        immediateRender: false,
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+        scale: 0.96,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power2.out'
+      });
+    });
+
+    /* Program grid tiles */
+    gsap.utils.toArray('.program-grid').forEach(function (container) {
+      var tiles = container.querySelectorAll('.program-tile');
+      gsap.from(tiles, {
+        immediateRender: false,
+        scrollTrigger: { trigger: container, start: 'top 85%', once: true },
+        y: 40,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'power2.out'
+      });
+    });
+
+    /* Featured story — content slides left, image slides right */
+    gsap.utils.toArray('.featured-story').forEach(function (el) {
+      var content = el.querySelector('.featured-story__content') || el.querySelector('.featured-story__copy');
+      var media = el.querySelector('.featured-story__media');
+      var stats = el.querySelector('.featured-story__stats');
+      if (content) {
+        gsap.from(content, {
+          immediateRender: false,
+          scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+          x: -40, opacity: 0, duration: 0.8, ease: 'power2.out'
+        });
+      }
+      if (media) {
+        gsap.from(media, {
+          immediateRender: false,
+          scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+          x: 40, opacity: 0, duration: 0.8, delay: 0.15, ease: 'power2.out'
+        });
+      }
+      if (stats) {
+        gsap.from(stats, {
+          immediateRender: false,
+          scrollTrigger: { trigger: el, start: 'top 70%', once: true },
+          y: 30, opacity: 0, duration: 0.7, delay: 0.3, ease: 'power2.out'
+        });
+      }
+    });
+
+    /* Insight featured — image reveal */
+    gsap.utils.toArray('.insight-featured').forEach(function (el) {
+      gsap.from(el, {
+        immediateRender: false,
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+        y: 40, opacity: 0, duration: 0.8, ease: 'power2.out'
+      });
+    });
+
+    /* Insight list items — stagger */
+    gsap.utils.toArray('.insight-list').forEach(function (container) {
+      var items = container.querySelectorAll('.insight-list__item');
+      gsap.from(items, {
+        immediateRender: false,
+        scrollTrigger: { trigger: container, start: 'top 88%', once: true },
+        x: -20, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out'
+      });
+    });
+
+    /* Case cards — stagger up */
+    gsap.utils.toArray('.case-grid').forEach(function (container) {
+      var cards = container.querySelectorAll('.case-card');
+      if (!cards.length) return;
+      gsap.from(cards, {
+        immediateRender: false,
+        scrollTrigger: { trigger: container, start: 'top 85%', once: true },
+        y: 50, opacity: 0, duration: 0.7, stagger: 0.12, ease: 'power2.out'
       });
     });
   }
@@ -468,11 +573,14 @@
       initTextReveal();
       initStaggeredCards();
 
-      /* Magnetic + tilt + cursor — desktop only */
+      /* Simple hover effects — desktop only */
       if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-        initMagneticButtons();
+        initSimpleButtonHover();
         initImageTilt();
-        initCursorFollower();
+      }
+
+      if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
       }
     });
   }
