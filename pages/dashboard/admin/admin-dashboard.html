@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- ============================== Admin Dashboard ============================== -->
+<!-- ============================== Admin Overview ============================== -->
 <html lang="en" dir="ltr" data-theme="light">
 <!-- ============================== Head ============================== -->
 <head>
@@ -37,295 +37,26 @@
   </div>
 </div>
 
-<!-- ============================== Main ============================== -->
+        <!-- ============================== Main ============================== -->
 <main id="main-content">
 <!-- ============================== Page Content ============================== -->
 <section class="section dashboard-section">
   <div class="container dashboard-app">
     <!-- ============================== Dashboard Sidebar ============================== -->
-    <aside class="dashboard-sidebar" data-reveal>
-      <span class="eyebrow eyebrow--small">Admin area</span>
-      <h2>Admin Panel</h2>
-      <p>Manage clients, content, bookings, and reporting.</p>
-      <nav class="dashboard-nav">
-        <a class="dashboard-nav__link is-current" href="#overview" data-dashboard-target="overview"><span class="material-symbols-outlined" aria-hidden="true">dashboard</span>Overview</a>
-        <a class="dashboard-nav__link" href="#bookings" data-dashboard-target="bookings"><span class="material-symbols-outlined" aria-hidden="true">event_note</span>Bookings</a>
-        <a class="dashboard-nav__link" href="#courses" data-dashboard-target="courses"><span class="material-symbols-outlined" aria-hidden="true">school</span>Courses</a>
-        <a class="dashboard-nav__link" href="#content" data-dashboard-target="content"><span class="material-symbols-outlined" aria-hidden="true">description</span>Content</a>
-        <a class="dashboard-nav__link" href="#reports" data-dashboard-target="reports"><span class="material-symbols-outlined" aria-hidden="true">bar_chart</span>Reports</a>
-        <a class="dashboard-nav__link" href="#clients" data-dashboard-target="clients"><span class="material-symbols-outlined" aria-hidden="true">groups</span>Clients</a>
-        <a class="dashboard-nav__link" href="#orders" data-dashboard-target="orders"><span class="material-symbols-outlined" aria-hidden="true">payments</span>Orders</a>
-        <a class="dashboard-nav__link" href="#settings" data-dashboard-target="settings"><span class="material-symbols-outlined" aria-hidden="true">settings</span>Settings</a>
-      </nav>
-    </aside>
-
+    <aside class="dashboard-sidebar" data-reveal><span class="eyebrow eyebrow--small">Admin area</span><h2>Admin Panel</h2><p>Manage clients, content, bookings, and reporting.</p><nav class="dashboard-nav"><a class="dashboard-nav__link is-current" href="admin-dashboard.html"><span class="material-symbols-outlined" aria-hidden="true">dashboard</span>Overview</a><a class="dashboard-nav__link" href="bookings.html"><span class="material-symbols-outlined" aria-hidden="true">event_note</span>Bookings</a><a class="dashboard-nav__link" href="courses.html"><span class="material-symbols-outlined" aria-hidden="true">school</span>Courses</a><a class="dashboard-nav__link" href="content.html"><span class="material-symbols-outlined" aria-hidden="true">description</span>Content</a><a class="dashboard-nav__link" href="reports.html"><span class="material-symbols-outlined" aria-hidden="true">bar_chart</span>Reports</a><a class="dashboard-nav__link" href="clients.html"><span class="material-symbols-outlined" aria-hidden="true">groups</span>Clients</a><a class="dashboard-nav__link" href="orders.html"><span class="material-symbols-outlined" aria-hidden="true">payments</span>Orders</a><a class="dashboard-nav__link" href="settings.html"><span class="material-symbols-outlined" aria-hidden="true">settings</span>Settings</a></nav></aside>
     <!-- ============================== Dashboard Main ============================== -->
     <div class="dashboard-main" data-reveal>
-      <div class="dashboard-panels" data-dashboard-router data-dashboard-default="overview">
-        <!-- ============================== Overview Panel ============================== -->
-        <section id="overview" class="dashboard-panel is-active" data-dashboard-panel="overview" data-dashboard-title="Admin Overview | Northline Advisory" data-dashboard-description="Monitor client activity, bookings, and program performance from one place.">
-          <div class="dashboard-heading">
-            <div class="dashboard-heading__bar">
-              <div>
-                <span class="eyebrow">Admin Overview</span>
-                <h1>Admin Overview</h1>
-                <p>Monitor client activity, bookings, and program performance from one place.</p>
-              </div>
-              <div class="dashboard-heading__actions">
-                <a class="button" href="#bookings" data-dashboard-target="bookings">Review bookings</a>
-                <a class="button button--ghost" href="#reports" data-dashboard-target="reports">Open reports</a>
-              </div>
-            </div>
-            <div class="dashboard-summary">
-              <div class="dashboard-summary__item"><span>Attention needed</span><strong>3 clients need follow-up</strong></div>
-              <div class="dashboard-summary__item"><span>Next milestone</span><strong>Content audit on Friday</strong></div>
-              <div class="dashboard-summary__item"><span>Revenue pace</span><strong>$18.4K in 30 days</strong></div>
-            </div>
-          </div>
-
-          <article class="dashboard-highlight">
-            <span class="eyebrow eyebrow--small">Operations focus</span>
-            <h2>Keep the dashboard readable by surfacing only the next action for each workflow.</h2>
-            <p>Bookings, reporting, and client follow-up are the current priorities. Everything else should support those decisions instead of competing with them.</p>
-          </article>
-
-          <div class="dashboard-grid dashboard-grid--three">
-            <article class="dashboard-card card"><span>Active clients</span><strong>28</strong><p>Across consulting and digital programs.</p></article>
-            <article class="dashboard-card card"><span>Open bookings</span><strong>12</strong><p>Scheduled in the next 14 days.</p></article>
-            <article class="dashboard-card card"><span>Course revenue</span><strong>$18.4K</strong><p>Last 30 days across programs and bundles.</p></article>
-          </div>
-
-          <div class="dashboard-grid">
-            <article class="dashboard-card card">
-              <div class="media-frame media-frame--article"><img loading="eager" fetchpriority="high" decoding="async" src="../../../assets/images/dashboard/admin-overview-photo.jpg" alt="Admin team reviewing dashboard operations and weekly delivery"></div>
-              <h3>Operations snapshot</h3>
-              <p>Keep bookings, follow-up, and program delivery visible without forcing the team to dig through multiple screens.</p>
-            </article>
-            <article class="dashboard-card card">
-              <h3>Next actions</h3>
-              <ul class="icon-list">
-                <li>Confirm upcoming bookings for the week</li>
-                <li>Review client follow-up flags after each call</li>
-                <li>Check course performance before the Friday audit</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- ============================== Bookings Panel ============================== -->
-        <section id="bookings" class="dashboard-panel" data-dashboard-panel="bookings" data-dashboard-title="Bookings | Northline Advisory" data-dashboard-description="Keep sessions, reschedules, and capacity visible across the calendar.">
-          <div class="dashboard-heading">
-            <span class="eyebrow">Bookings</span>
-            <h1>Bookings</h1>
-            <p>Keep sessions, reschedules, and capacity visible across the calendar.</p>
-          </div>
-
-          <div class="dashboard-grid">
-            <article class="dashboard-card card">
-              <div class="media-frame media-frame--article"><img loading="eager" fetchpriority="high" decoding="async" src="../../../assets/images/dashboard/bookings-photo.jpg" alt="Admin reviewing the coaching bookings calendar"></div>
-              <h3>Upcoming bookings</h3>
-              <ul class="icon-list">
-                <li>3 strategy intensives this week</li>
-                <li>5 retainer calls next week</li>
-                <li>2 reschedules pending</li>
-              </ul>
-            </article>
-            <article class="dashboard-card card">
-              <h3>Calendar notes</h3>
-              <p>Keep Tuesday open for roadmap reviews and reserve Friday for dashboard support sessions.</p>
-              <ul class="icon-list">
-                <li>Morning blocks perform best for intensive sessions</li>
-                <li>Hold one afternoon buffer for reschedules and follow-up</li>
-                <li>Keep implementation reviews grouped to reduce context switching</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- ============================== Courses Panel ============================== -->
-        <section id="courses" class="dashboard-panel" data-dashboard-panel="courses" data-dashboard-title="Course Management | Northline Advisory" data-dashboard-description="Track program publishing, lesson updates, and resource library changes.">
-          <div class="dashboard-heading">
-            <span class="eyebrow">Course Management</span>
-            <h1>Course Management</h1>
-            <p>Track program publishing, lesson updates, and resource library changes.</p>
-          </div>
-
-          <div class="dashboard-grid">
-            <article class="dashboard-card card">
-              <div class="media-frame media-frame--article"><img loading="eager" fetchpriority="high" decoding="async" src="../../../assets/images/dashboard/admin-courses-photo.jpg" alt="Admin reviewing course content and program materials"></div>
-              <h3>Program library</h3>
-              <ul class="icon-list">
-                <li>Build Your 90-Day Growth Plan</li>
-                <li>Offer Positioning Workshop</li>
-                <li>Client Delivery Playbook</li>
-              </ul>
-            </article>
-            <article class="dashboard-card card">
-              <h3>Next content update</h3>
-              <p>Add milestone tracking worksheets to the library.</p>
-              <ul class="icon-list">
-                <li>Introduce a weekly scorecard worksheet for active clients</li>
-                <li>Add onboarding checklists to the delivery playbook</li>
-                <li>Refresh lesson summaries with clearer next-action prompts</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- ============================== Content Panel ============================== -->
-        <section id="content" class="dashboard-panel" data-dashboard-panel="content" data-dashboard-title="Content Management | Northline Advisory" data-dashboard-description="Coordinate case studies, blog publishing, and resource updates.">
-          <div class="dashboard-heading">
-            <span class="eyebrow">Content Management</span>
-            <h1>Content Management</h1>
-            <p>Coordinate case studies, blog publishing, and resource updates.</p>
-          </div>
-
-          <div class="dashboard-grid">
-            <article class="dashboard-card card">
-              <div class="media-frame media-frame--article"><img loading="eager" fetchpriority="high" decoding="async" src="../../../assets/images/dashboard/content-planning-photo.jpg" alt="Admin planning content updates for dashboard resources"></div>
-              <h3>Recent posts</h3>
-              <ul class="icon-list">
-                <li>Simplify a small-business offer</li>
-                <li>What clients notice first in delivery</li>
-                <li>When a course should support advisory work</li>
-              </ul>
-            </article>
-            <article class="dashboard-card card">
-              <h3>Publishing queue</h3>
-              <p>Two case studies and one blog update are ready for review.</p>
-              <ul class="icon-list">
-                <li>Kepler Studio case study needs final metrics</li>
-                <li>Forma Legal onboarding article is ready for copy polish</li>
-                <li>Worksheet library refresh should publish with the next course update</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- ============================== Reports Panel ============================== -->
-        <section id="reports" class="dashboard-panel" data-dashboard-panel="reports" data-dashboard-title="Reports | Northline Advisory" data-dashboard-description="See what is working across engagement quality, retention, and program usage.">
-          <div class="dashboard-heading">
-            <span class="eyebrow">Reports</span>
-            <h1>Reports</h1>
-            <p>See what is working across engagement quality, retention, and program usage.</p>
-          </div>
-
-          <div class="dashboard-grid">
-            <article class="dashboard-card card">
-              <div class="media-frame media-frame--article"><img loading="eager" fetchpriority="high" decoding="async" src="../../../assets/images/dashboard/reports-photo.jpg" alt="Admin reviewing performance reports and engagement metrics"></div>
-              <h3>Performance highlights</h3>
-              <p>Highest engagement comes from worksheet downloads after live calls.</p>
-              <ul class="icon-list">
-                <li>Dashboard logins spike within 24 hours of live sessions</li>
-                <li>Worksheet downloads drive the strongest follow-through rate</li>
-                <li>Clients who revisit lessons are more likely to book the next call early</li>
-              </ul>
-            </article>
-            <article class="dashboard-card card">
-              <h3>Retention notes</h3>
-              <p>Clients who complete lesson three within the first week stay active longer.</p>
-              <ul class="icon-list">
-                <li>Early onboarding completion correlates with stronger renewal intent</li>
-                <li>Clear next actions reduce support requests between calls</li>
-                <li>Regular progress reviews improve adoption of digital resources</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- ============================== Clients Panel ============================== -->
-        <section id="clients" class="dashboard-panel" data-dashboard-panel="clients" data-dashboard-title="Client Management | Northline Advisory" data-dashboard-description="Review active engagements, client status, and next actions.">
-          <div class="dashboard-heading">
-            <span class="eyebrow">Client Management</span>
-            <h1>Client Management</h1>
-            <p>Review active engagements, client status, and next actions.</p>
-          </div>
-
-          <div class="dashboard-grid dashboard-grid--three">
-            <article class="dashboard-card card">
-              <div class="media-frame media-frame--article"><img loading="eager" fetchpriority="high" decoding="async" src="../../../assets/images/dashboard/clients-photo.jpg" alt="Admin team collaborating on active client delivery"></div>
-              <h3>Kepler Studio</h3>
-              <p>Retainer client focused on offer clarity and onboarding.</p>
-            </article>
-            <article class="dashboard-card card">
-              <h3>Bridgehouse Ops</h3>
-              <p>Strategy Intensive completed. Follow-up in progress.</p>
-            </article>
-            <article class="dashboard-card card">
-              <h3>Forma Legal</h3>
-              <p>Program bundle plus dashboard access.</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- ============================== Orders Panel ============================== -->
-        <section id="orders" class="dashboard-panel" data-dashboard-panel="orders" data-dashboard-title="Orders | Northline Advisory" data-dashboard-description="Review payments, product orders, and billing workflows.">
-          <div class="dashboard-heading">
-            <span class="eyebrow">Orders</span>
-            <h1>Orders</h1>
-            <p>Review payments, product orders, and billing workflows.</p>
-          </div>
-
-          <div class="dashboard-grid">
-            <article class="dashboard-card card">
-              <div class="media-frame media-frame--article"><img loading="eager" fetchpriority="high" decoding="async" src="../../../assets/images/dashboard/orders-photo.jpg" alt="Admin reviewing consulting orders and payment status"></div>
-              <h3>Recent orders</h3>
-              <ul class="icon-list">
-                <li>Strategy Intensive - Paid</li>
-                <li>Program Bundle - Paid</li>
-                <li>Retainer Deposit - Pending</li>
-              </ul>
-            </article>
-            <article class="dashboard-card card">
-              <h3>Payment workflows</h3>
-              <p>Stripe and PayPal connection points remain ready for integration.</p>
-              <ul class="icon-list">
-                <li>Stripe can power direct checkout and recurring retainers</li>
-                <li>PayPal can remain as a secondary purchase option</li>
-                <li>Invoice confirmation can trigger dashboard access automatically</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- ============================== Settings Panel ============================== -->
-        <section id="settings" class="dashboard-panel" data-dashboard-panel="settings" data-dashboard-title="Settings | Northline Advisory" data-dashboard-description="Manage operational defaults, branding, and access controls.">
-          <div class="dashboard-heading">
-            <span class="eyebrow">Settings</span>
-            <h1>Settings</h1>
-            <p>Manage operational defaults, branding, and access controls.</p>
-          </div>
-
-          <div class="dashboard-grid">
-            <article class="dashboard-card card">
-              <div class="media-frame media-frame--article"><img loading="eager" fetchpriority="high" decoding="async" src="../../../assets/images/dashboard/settings-photo.jpg" alt="Admin reviewing dashboard settings and operations"></div>
-              <h3>Platform settings</h3>
-              <p>Manage notifications, branding, booking buffers, and integrations.</p>
-              <ul class="icon-list">
-                <li>Booking buffers are currently set around roadmap review sessions</li>
-                <li>Brand assets and hero imagery can be swapped from the shared brand assets</li>
-                <li>Payment and newsletter integrations remain ready for live providers</li>
-              </ul>
-            </article>
-            <article class="dashboard-card card">
-              <h3>Roles and access</h3>
-              <p>Admin, coach, and client permission structures can be expanded later.</p>
-              <ul class="icon-list">
-                <li>Admins control reporting, content, and order settings</li>
-                <li>Coaches can manage bookings, notes, and resource delivery</li>
-                <li>Clients keep access to sessions, programs, and worksheets only</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-      </div>
+      <div class="dashboard-heading"><div class="dashboard-heading__bar"><div><span class="eyebrow">Admin Overview</span><h1>Admin Overview</h1><p>Monitor client activity, bookings, and program performance from one place.</p></div><div class="dashboard-heading__actions"><a class="button" href="bookings.html">Review bookings</a><a class="button button--ghost" href="reports.html">Open reports</a></div></div><div class="dashboard-summary"><div class="dashboard-summary__item"><span>Attention needed</span><strong>3 clients need follow-up</strong></div><div class="dashboard-summary__item"><span>Next milestone</span><strong>Content audit on Friday</strong></div><div class="dashboard-summary__item"><span>Revenue pace</span><strong>$18.4K in 30 days</strong></div></div></div>
+      <article class="dashboard-highlight"><span class="eyebrow eyebrow--small">Operations focus</span><h2>Keep the dashboard readable by surfacing only the next action for each workflow.</h2><p>Bookings, reporting, and client follow-up are the current priorities. Everything else should support those decisions instead of competing with them.</p></article>
+      <div class="dashboard-grid dashboard-grid--three"><article class="dashboard-card card"><span>Active clients</span><strong>28</strong><p>Across consulting and digital programs.</p></article><article class="dashboard-card card"><span>Open bookings</span><strong>12</strong><p>Scheduled in the next 14 days.</p></article><article class="dashboard-card card"><span>Course revenue</span><strong>$18.4K</strong><p>Last 30 days across programs and bundles.</p></article></div><div class="dashboard-grid"><article class="dashboard-card card"><div class="media-frame media-frame--article"><img loading="eager" fetchpriority="high" decoding="async" src="../../../assets/images/dashboard/admin-overview-photo.jpg" alt="Admin team reviewing dashboard operations and weekly delivery" ></div><h3>Operations snapshot</h3><p>Keep bookings, follow-up, and program delivery visible without forcing the team to dig through multiple screens.</p></article><article class="dashboard-card card"><h3>Next actions</h3><ul class="icon-list"><li>Confirm upcoming bookings for the week</li><li>Review client follow-up flags after each call</li><li>Check course performance before the Friday audit</li></ul></article></div>
     </div>
   </div>
 </section>
-</main>
 
-<!-- ============================== Scripts ============================== -->
+        </main>
+        <!-- ============================== Scripts ============================== -->
 <script src="../../../assets/js/dashboard.js?v=16" defer></script>
 <script src="../../../assets/js/main.js?v=10" defer></script>
-</body>
-</html>
+
+      </body>
+    </html>
