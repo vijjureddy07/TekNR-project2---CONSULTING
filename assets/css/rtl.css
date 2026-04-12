@@ -34,16 +34,6 @@ html[dir="rtl"] .check-item {
   flex-direction: row-reverse;
 }
 
-html[dir="rtl"] .dashboard-nav__link {
-  flex-direction: row-reverse;
-}
-
-html[dir="rtl"] .dashboard-nav__link:hover,
-html[dir="rtl"] .dashboard-nav__link.is-current,
-html[dir="rtl"] .dashboard-nav__link[aria-current="page"] {
-  transform: translateX(-4px);
-}
-
 html[dir="rtl"] .text-link {
   flex-direction: row-reverse;
 }
@@ -133,23 +123,6 @@ html[dir="rtl"] .process-copy {
   text-align: right;
 }
 
-html[dir="rtl"] .dashboard-heading {
-  text-align: right;
-}
-
-html[dir="rtl"] .dashboard-heading > .eyebrow,
-html[dir="rtl"] .dashboard-heading > h1,
-html[dir="rtl"] .dashboard-heading > p {
-  justify-self: end;
-}
-
-html[dir="rtl"] .dashboard-heading__bar > div:first-child,
-html[dir="rtl"] .dashboard-summary__item,
-html[dir="rtl"] .dashboard-card,
-html[dir="rtl"] .dashboard-sidebar {
-  text-align: right;
-}
-
 html[dir="rtl"] .team-card__meta {
   text-align: right;
 }
@@ -184,11 +157,6 @@ html[dir="rtl"] .navbar__actions {
 
 html[dir="rtl"] .utility-bar__actions {
   justify-content: flex-start;
-}
-
-html[dir="rtl"] .page-dashboard-shell .utility-bar__actions {
-  margin-inline-start: 0;
-  margin-inline-end: auto;
 }
 
 html[dir="rtl"] .hero-actions {
@@ -238,18 +206,160 @@ html[dir="rtl"] .utility-bar__inner {
   direction: rtl;
 }
 
+/* Dashboard RTL mirrors structure and content alignment without flipping English copy flow. */
+html[dir="rtl"] body.page-dashboard-shell {
+  direction: ltr;
+}
+
+html[dir="rtl"] .page-dashboard-shell .utility-bar__inner {
+  direction: ltr;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+html[dir="rtl"] .page-dashboard-shell .utility-bar__brand {
+  direction: rtl;
+  flex-direction: row;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: end;
+  text-align: right;
+}
+
+html[dir="rtl"] .page-dashboard-shell .utility-bar__brand .utility-bar__brand-text {
+  text-align: right;
+}
+
+html[dir="rtl"] .page-dashboard-shell .utility-bar__actions {
+  direction: rtl;
+  flex-direction: row;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  justify-self: start;
+  justify-content: flex-start;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-app {
+  grid-template-columns: minmax(0, 1fr) 280px;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-main {
+  order: 1;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-sidebar {
+  order: 2;
+  text-align: right;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-sidebar > .eyebrow,
+html[dir="rtl"] .page-dashboard-shell .dashboard-card > span,
+html[dir="rtl"] .page-dashboard-shell .dashboard-highlight > .eyebrow {
+  justify-self: end;
+}
+
+html[dir="rtl"] .page-dashboard-shell :is(.dashboard-main, .dashboard-panel, .dashboard-heading, .dashboard-heading__bar > div:first-child, .dashboard-card, .dashboard-highlight, .dashboard-summary__item, .booking-layout) {
+  text-align: right;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-heading > :is(.eyebrow, h1, p),
+html[dir="rtl"] .page-dashboard-shell .dashboard-heading__bar > div:first-child > :is(.eyebrow, h1, p) {
+  justify-self: end;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-heading__bar {
+  direction: rtl;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-heading__actions,
+html[dir="rtl"] .page-dashboard-shell .hero-actions,
+html[dir="rtl"] .page-dashboard-shell .payment-options {
+  direction: rtl;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-heading__actions > *,
+html[dir="rtl"] .page-dashboard-shell .hero-actions > *,
+html[dir="rtl"] .page-dashboard-shell .payment-options > * {
+  direction: ltr;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-summary,
+html[dir="rtl"] .page-dashboard-shell .dashboard-grid,
+html[dir="rtl"] .page-dashboard-shell .booking-layout,
+html[dir="rtl"] .page-dashboard-shell .slot-grid {
+  direction: rtl;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-summary > *,
+html[dir="rtl"] .page-dashboard-shell .dashboard-grid > *,
+html[dir="rtl"] .page-dashboard-shell .booking-layout > *,
+html[dir="rtl"] .page-dashboard-shell .slot-grid > * {
+  direction: ltr;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-nav__link {
+  direction: rtl;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: right;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-sidebar__controls {
+  direction: rtl;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+html[dir="rtl"] .page-dashboard-shell .text-link {
+  direction: rtl;
+  flex-direction: row;
+}
+
+html[dir="rtl"] .page-dashboard-shell button.text-link {
+  text-align: right;
+}
+
+html[dir="rtl"] .page-dashboard-shell .icon-list li {
+  padding-left: 0;
+  padding-right: 24px;
+  text-align: right;
+}
+
+html[dir="rtl"] .page-dashboard-shell .icon-list li::before {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .page-dashboard-shell .dashboard-nav__link:hover,
+html[dir="rtl"] .page-dashboard-shell .dashboard-nav__link.is-current,
+html[dir="rtl"] .page-dashboard-shell .dashboard-nav__link[aria-current="page"] {
+  transform: none;
+}
+
 @media (max-width: 1024px) {
   html[dir="rtl"] .page-dashboard-shell .dashboard-sidebar {
-    inset-inline-start: auto;
-    inset-inline-end: 0;
-    border-radius: 0;
+    left: auto !important;
+    right: 0 !important;
+    inset-inline-start: auto !important;
+    inset-inline-end: 0 !important;
+    border-radius: 22px 0 0 22px !important;
     border-inline-start: 1px solid var(--color-border);
     border-inline-end: 0;
-    transform: translateX(100%);
+    transform: translate3d(100%, 0, 0) !important;
   }
 
   html[dir="rtl"] .page-dashboard-shell .dashboard-sidebar.is-open,
   html[dir="rtl"] body.dashboard-sidebar-open .page-dashboard-shell .dashboard-sidebar {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0) !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  html[dir="rtl"] .page-dashboard-shell .dashboard-sidebar__close {
+    left: 18px !important;
+    right: auto !important;
   }
 }
