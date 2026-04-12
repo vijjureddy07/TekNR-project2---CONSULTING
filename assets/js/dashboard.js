@@ -6,13 +6,117 @@
     return window.location.pathname.indexOf('/dashboard/admin/') !== -1;
   }
 
+  function getDashboardRouter() {
+    return document.querySelector('[data-dashboard-router]');
+  }
+
+  function getDashboardRouteConfig() {
+    var root = getDashboardRouter();
+    var panels;
+
+    if (!root) {
+      return null;
+    }
+
+    panels = Array.from(root.querySelectorAll('[data-dashboard-panel]'));
+
+    if (!panels.length) {
+      return null;
+    }
+
+    return {
+      root: root,
+      panels: panels,
+      defaultPanel: root.getAttribute('data-dashboard-default') || panels[0].getAttribute('data-dashboard-panel')
+    };
+  }
+
+  function normalizeDashboardRoute(route, config) {
+    var value = (route || '').replace(/^#/, '').trim();
+    var exists = config.panels.some(function (panel) {
+      return panel.getAttribute('data-dashboard-panel') === value;
+    });
+
+    return exists ? value : config.defaultPanel;
+  }
+
+  function getCurrentDashboardRoute() {
+    var config = getDashboardRouteConfig();
+
+    if (!config) {
+      return '';
+    }
+
+    return normalizeDashboardRoute(window.location.hash, config);
+  }
+
+  function getDashboardLinkMeta(link) {
+    var routeTarget = (link.getAttribute('data-dashboard-target') || '').trim();
+    var href = link.getAttribute('href') || '';
+    var targetUrl;
+    var route;
+    var page;
+
+    if (routeTarget) {
+      return {
+        type: 'panel',
+        route: routeTarget
+      };
+    }
+
+    if (!href) {
+      return null;
+    }
+
+    if (href.charAt(0) === '#') {
+      return {
+        type: 'panel',
+        route: href.slice(1)
+      };
+    }
+
+    targetUrl = new URL(href, window.location.href);
+    route = targetUrl.hash.replace(/^#/, '').trim();
+    page = targetUrl.pathname.split('/').pop() || '';
+
+    if ((page === 'client-dashboard.html' || page === 'admin-dashboard.html') && route) {
+      return {
+        type: 'panel',
+        route: route
+      };
+    }
+
+    if (page === 'course-player.html') {
+      page = 'my-courses.html';
+    }
+
+    return {
+      type: 'page',
+      page: page
+    };
+  }
+
   /* ============================== Dashboard Navigation ============================== */
-  function markCurrentDashboardLinks() {
+  function markCurrentDashboardLinks(activeRouteOverride) {
+    var routerConfig = getDashboardRouteConfig();
+    var currentRoute = routerConfig ? normalizeDashboardRoute(activeRouteOverride || window.location.hash, routerConfig) : '';
     var currentPage = getCurrentDashboardPage();
 
-    document.querySelectorAll('.dashboard-nav__link[href]').forEach(function (link) {
-      var href = (link.getAttribute('href') || '').split('/').pop();
-      var isCurrent = href === currentPage;
+    document.querySelectorAll('.dashboard-nav__link').forEach(function (link) {
+      var linkMeta = getDashboardLinkMeta(link);
+      var isCurrent = false;
+
+      if (!linkMeta) {
+        return;
+      }
+
+      if (routerConfig && linkMeta.type === 'panel') {
+        isCurrent = linkMeta.route === currentRoute;
+      } else if (!routerConfig && linkMeta.type === 'page') {
+        isCurrent = linkMeta.page === currentPage;
+      } else if (!routerConfig && currentPage === 'my-courses.html' && linkMeta.type === 'panel') {
+        isCurrent = linkMeta.route === 'courses';
+      }
 
       link.classList.toggle('is-current', isCurrent);
 
@@ -74,6 +178,103 @@
 
     return currentPage;
   }
+
+  /* ============================== Dashboard Panels ============================== */
+  function initDashboardRouter() {
+    var config = getDashboardRouteConfig();
+    var descriptionMeta = document.querySelector('meta[name="description"]');
+    var isSyncingHash = false;
+
+    function updateHash(route) {
+      if (window.location.hash.replace(/^#/, '') === route) {
+        return;
+      }
+
+      isSyncingHash = true;
+      window.location.hash = route;
+
+      window.setTimeout(function () {
+        isSyncingHash = false;
+      }, 0);
+    }
+
+    function syncRoute(options) {
+      var activeRoute = normalizeDashboardRoute(
+        options && options.route ? options.route : window.location.hash,
+        config
+      );
+      var activePanel;
+
+      config.panels.forEach(function (panel) {
+        var isActive = panel.getAttribute('data-dashboard-panel') === activeRoute;
+
+        panel.hidden = !isActive;
+        panel.classList.toggle('is-active', isActive);
+
+        if (isActive) {
+          activePanel = panel;
+        }
+      });
+
+      config.root.classList.add('dashboard-router-ready');
+
+      markCurrentDashboardLinks(activeRoute);
+
+      if (activePanel) {
+        document.title = activePanel.getAttribute('data-dashboard-title') || document.title;
+
+        if (descriptionMeta && activePanel.getAttribute('data-dashboard-description')) {
+          descriptionMeta.setAttribute('content', activePanel.getAttribute('data-dashboard-description'));
+        }
+      }
+
+      if (options && options.scrollToTop) {
+        window.scrollTo(0, 0);
+      }
+
+      if (!options || options.updateHash !== false) {
+        updateHash(activeRoute);
+      }
+
+      document.dispatchEvent(new CustomEvent('northline:dashboardroutechange', {
+        detail: { route: activeRoute }
+      }));
+    }
+
+    if (!config) {
+      return;
+    }
+
+    document.querySelectorAll('[data-dashboard-target]').forEach(function (control) {
+      control.addEventListener('click', function (event) {
+        var targetRoute = normalizeDashboardRoute(control.getAttribute('data-dashboard-target'), config);
+
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+          return;
+        }
+
+        event.preventDefault();
+
+        if (window.location.hash.replace(/^#/, '') === targetRoute) {
+          syncRoute({ route: targetRoute, scrollToTop: true, updateHash: false });
+          return;
+        }
+
+        syncRoute({ route: targetRoute, scrollToTop: true });
+      });
+    });
+
+    window.addEventListener('hashchange', function () {
+      if (isSyncingHash) {
+        return;
+      }
+
+      syncRoute({ scrollToTop: true, updateHash: false });
+    });
+
+    syncRoute({ scrollToTop: false, updateHash: false });
+  }
+
   /* ============================== Dashboard Sidebar ============================== */
   function initDashboardSidebar() {
     var sidebar = document.querySelector('.dashboard-sidebar');
@@ -134,6 +335,7 @@
       sidebar.insertBefore(controlsHost, closeButton.nextSibling);
     }
 
+    var sidebarShell = sidebar.closest('.dashboard-app') || sidebar.parentElement || document.body;
     var backdrop = document.querySelector('[data-dashboard-sidebar-backdrop]');
 
     if (!backdrop) {
@@ -143,7 +345,10 @@
       backdrop.hidden = true;
       backdrop.setAttribute('data-dashboard-sidebar-backdrop', '');
       backdrop.setAttribute('aria-label', 'Close dashboard menu');
-      document.body.appendChild(backdrop);
+    }
+
+    if (backdrop.parentElement !== sidebarShell) {
+      sidebarShell.appendChild(backdrop);
     }
 
     function usesOverlaySidebar() {
@@ -237,30 +442,55 @@
       closeSidebar(true);
     });
 
-    sidebar.querySelectorAll('.dashboard-nav__link[href]').forEach(function (link) {
-      link.addEventListener('click', function (event) {
-        var targetUrl = new URL(link.getAttribute('href'), window.location.href);
+    sidebar.addEventListener('click', function (event) {
+      var link = event.target.closest('.dashboard-nav__link');
+      var targetUrl;
 
-        if (isModifiedClick(event, link)) {
-          return;
-        }
+      if (!link || !sidebar.contains(link)) {
+        return;
+      }
 
-        if (targetUrl.pathname === window.location.pathname &&
-            targetUrl.search === window.location.search &&
-            targetUrl.hash === window.location.hash) {
-          event.preventDefault();
-          closeSidebar(false);
-          return;
-        }
-
+      if (link.hasAttribute('data-dashboard-target')) {
         if (usesOverlaySidebar()) {
-          closeSidebar(false);
+          window.setTimeout(function () {
+            closeSidebar(false);
+          }, 0);
         }
-      });
+
+        return;
+      }
+
+      if (!link.hasAttribute('href') || isModifiedClick(event, link)) {
+        return;
+      }
+
+      targetUrl = new URL(link.getAttribute('href'), window.location.href);
+
+      if (targetUrl.pathname === window.location.pathname &&
+          targetUrl.search === window.location.search &&
+          targetUrl.hash === window.location.hash) {
+        event.preventDefault();
+        closeSidebar(false);
+        return;
+      }
+
+      if (usesOverlaySidebar()) {
+        event.preventDefault();
+        closeSidebar(false);
+
+        window.setTimeout(function () {
+          window.location.href = targetUrl.href;
+        }, 0);
+      }
     });
 
     window.addEventListener('resize', syncSidebarState);
     document.addEventListener('northline:directionchange', syncSidebarState);
+    document.addEventListener('northline:dashboardroutechange', function () {
+      if (usesOverlaySidebar()) {
+        closeSidebar(false);
+      }
+    });
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && document.body.classList.contains('dashboard-sidebar-open')) {
         closeSidebar(true);
@@ -303,6 +533,7 @@
   /* ============================== Dashboard Bootstrap ============================== */
   window.initDashboard = function initDashboard() {
     normalizeDashboardLabels();
+    initDashboardRouter();
     markCurrentDashboardLinks();
     initDashboardSidebar();
     initBookingSelection();
