@@ -10745,7 +10745,7 @@ img, video, svg {
 }
 
 .page-dashboard-shell .dashboard-card .media-frame img {
-  object-position: center 35%;
+  object-position: center top;
 }
 
 /* --- Pullquote should use full available width --- */
