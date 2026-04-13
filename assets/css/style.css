@@ -137,6 +137,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   scroll-padding-top: 96px;
   scroll-padding-bottom: env(safe-area-inset-bottom, 0px);
+  overflow-x: clip;
 }
 
 body {
@@ -151,6 +152,11 @@ body {
   /* Omnis selection colors */
   --selection-bg: #176782;
   --selection-color: #fff;
+}
+
+body.site-body {
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -10173,7 +10179,106 @@ body.menu-open {
   z-index: 80;
 }
 
-/* Horizontal bleed: clip on main only — never html/body (breaks sticky header). */
+/* Horizontal bleed: clip it at the page shell too so header/footer cannot widen the viewport. */
+
+body.site-body:not(.page-dashboard-shell):not(.page-dashboard-open) {
+  width: 100%;
+  max-width: 100%;
+}
+
+body.site-body:not(.page-dashboard-shell):not(.page-dashboard-open) :is(
+  main,
+  .site-footer,
+  .utility-bar,
+  .utility-section,
+  .auth-section
+) {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body.site-body:not(.page-dashboard-shell):not(.page-dashboard-open) :is(
+  .navbar,
+  .desktop-nav,
+  .navbar__actions,
+  .footer-grid,
+  .footer-bottom,
+  .footer-bottom__info,
+  .newsletter-form__row,
+  .hero-actions,
+  .page-hero-omnis__inner,
+  .hero-layout,
+  .story-layout,
+  .split-feature,
+  .detail-grid,
+  .contact-grid,
+  .checkout-grid,
+  .overview-grid,
+  .history-grid,
+  .featured-story,
+  .advisory-hero-layout,
+  .metrics-layout,
+  .values-layout,
+  .process-layout,
+  .detail-hero,
+  .article-hero,
+  .delivery-model,
+  .service-grid,
+  .case-grid,
+  .team-grid,
+  .article-grid,
+  .pricing-grid,
+  .process-grid,
+  .info-grid,
+  .services-split,
+  .about-dark-split,
+  .client-experience-layout,
+  .client-experience-showcase__item
+) {
+  max-width: 100%;
+}
+
+body.site-body:not(.page-dashboard-shell):not(.page-dashboard-open) :is(
+  .navbar,
+  .desktop-nav,
+  .navbar__actions,
+  .footer-grid,
+  .footer-bottom,
+  .footer-bottom__info,
+  .newsletter-form__row,
+  .hero-actions,
+  .page-hero-omnis__inner,
+  .hero-layout,
+  .story-layout,
+  .split-feature,
+  .detail-grid,
+  .contact-grid,
+  .checkout-grid,
+  .overview-grid,
+  .history-grid,
+  .featured-story,
+  .advisory-hero-layout,
+  .metrics-layout,
+  .values-layout,
+  .process-layout,
+  .detail-hero,
+  .article-hero,
+  .delivery-model,
+  .service-grid,
+  .case-grid,
+  .team-grid,
+  .article-grid,
+  .pricing-grid,
+  .process-grid,
+  .info-grid,
+  .services-split,
+  .about-dark-split,
+  .client-experience-layout,
+  .client-experience-showcase__item
+) > * {
+  min-width: 0;
+  max-width: 100%;
+}
 
 :is(.detail-hero, .about-dark-split, .featured-story, .case-grid, .services-split) > * {
   min-width: 0;
