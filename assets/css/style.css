@@ -5357,6 +5357,9 @@ select:focus-visible {
 }
 
 /* Last blocks are already deep navy — drop main bottom padding so nothing shows above the footer */
+.page-home-alt main,
+.page-blog main,
+.page-case-studies main,
 .page-contact main {
   padding-bottom: 0 !important;
 }
@@ -11640,6 +11643,44 @@ img, video, svg {
   box-shadow: none;
   border-radius: 0;
   padding: 0;
+}
+
+.page-case-studies .featured-story__stats {
+  padding: 0;
+}
+
+.page-case-studies .featured-story__stat:only-child {
+  background: rgba(8, 34, 43, 0.62);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(82, 188, 224, 0.22);
+  border-radius: 24px;
+  padding: clamp(16px, 2vw, 22px) clamp(18px, 2.2vw, 24px);
+}
+
+.page-case-studies .stats-bar {
+  border-top: none;
+  border-bottom: none;
+}
+
+.page-case-studies div.section--deep:has(> .stats-bar) {
+  padding-bottom: 0 !important;
+}
+
+main:has(> .section--deep:last-child) {
+  padding-bottom: 0 !important;
+}
+
+.section--deep:has(> .stats-bar):has(+ .section--deep) {
+  padding-bottom: 0 !important;
+}
+
+.section--deep:has(> .stats-bar):has(+ .section--deep) > .stats-bar {
+  border-top: none;
+  border-bottom: none;
+}
+
+.section--deep:has(> .stats-bar) + .section--deep {
+  padding-top: 0 !important;
 }
 
 /* Remove oversized inter-section blank feeling on repeated blocks. */
